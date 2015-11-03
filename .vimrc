@@ -116,7 +116,7 @@ set statusline+=%-8.{Indentation_practice()} " Indentation practice
 set statusline+=%-6.(%c%V%)\%-4.(%P%) " Current Column
 
 
-function Indentation_practice()
+function! Indentation_practice()
     if &expandtab == 1
         return "Sp".&shiftwidth
     else
@@ -124,7 +124,7 @@ function Indentation_practice()
     endif
 endfunction
 
-function Paste_mode()
+function! Paste_mode()
     if &paste == 1
         return "Paste"
     else
