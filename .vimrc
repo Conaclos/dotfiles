@@ -235,7 +235,7 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.rs set filetype=rust
 
 
-" Local settings
+" Extra settings
 " --------------
 
 if filereadable($HOME.'/.vimrc.local')
