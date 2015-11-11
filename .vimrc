@@ -68,6 +68,10 @@ if has('persistent_undo') && isdirectory($VIM_DATA_HOME.'/undo')
 endif
 
 
+set viminfo=
+    " Skip other histories
+
+
 " Colors
 " ------
 
