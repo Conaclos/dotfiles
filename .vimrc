@@ -25,7 +25,7 @@ set nocompatible
     " Don't care about retro-compatibility of Vi settings
     " Must be first since it has a side-effect on the settings
 
-set history=200 " Command history length (Default: 50)
+set history=100 " Command history length (Default: 50)
 
 set textwidth=80 " Ideal maximum width of a line
 
@@ -63,8 +63,8 @@ if has('persistent_undo') && isdirectory($VIM_DATA_HOME.'/undo')
 
     set undodir=$VIM_DATA_HOME/undo// " // prevents name collision
     set undofile " Enable persistent undo files
-    set undolevels=800 " Maximum number of undoing changes
-    set undoreload=8000  " Maximum number of lines to save for undo
+    set undolevels=200 " Maximum number of undoing changes
+    set undoreload=8000 " Maximum number of lines to save for undo
 endif
 
 
