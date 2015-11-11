@@ -72,6 +72,7 @@ if has('persistent_undo') && isdirectory($VIM_DATA_HOME.'/undo')
 endif
 
 
+let g:netrw_dirhistmax = 0
 set viminfo=
     " Skip other histories
 
