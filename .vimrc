@@ -30,16 +30,20 @@ set history=100 " Command history length (Default: 50)
 set textwidth=80 " Ideal maximum width of a line
 
 
-" Backup
-" ------
+" XDG compliant
+" -------------
 
-" Use XDG cache directory for backup files
 if empty($XDG_DATA_HOME)
     let $VIM_DATA_HOME=$HOME.'/.local/share/vim'
 else
     let $VIM_DATA_HOME=$XDG_DATA_HOME
 endif
 
+set runtimepath+=$VIM_DATA_HOME " Add $VIM_DATA_HOME as runtime directory
+
+
+" Backup
+" ------
 
 if isdirectory($VIM_DATA_HOME.'/backup')
     set backupdir=$VIM_DATA_HOME/backup// " // prevents name collision
