@@ -33,8 +33,16 @@ set textwidth=80 " Ideal maximum width of a line
 " Backup
 " ------
 
-if isdirectory($HOME.'/.vim/backup')
-    set backupdir=$HOME/.vim/backup// " // prevents name collision
+" Use XDG cache directory for backup files
+if empty($XDG_DATA_HOME)
+    let $VIM_DATA_HOME=$HOME.'/.local/share/vim'
+else
+    let $VIM_DATA_HOME=$XDG_DATA_HOME
+endif
+
+
+if isdirectory($VIM_DATA_HOME.'/backup')
+    set backupdir=$VIM_DATA_HOME/backup// " // prevents name collision
 
     set backupskip+=/tmp/*,*/shm/*,*/playroom/*,*.swp,*.bak
 else
@@ -43,17 +51,17 @@ else
 endif
 
 
-if isdirectory($HOME.'/.vim/swap')
-    set directory=$HOME/.vim/swap// " // prevents name collision
+if isdirectory($VIM_DATA_HOME.'/swap')
+    set directory=$VIM_DATA_HOME/swap// " // prevents name collision
 else
     set noswapfile
 endif
 
 
-if has('persistent_undo') && isdirectory($HOME.'/.vim/undo')
+if has('persistent_undo') && isdirectory($VIM_DATA_HOME.'/undo')
     " Persistent undo
 
-    set undodir=$HOME/.vim/undo// " // prevents name collision
+    set undodir=$VIM_DATA_HOME/undo// " // prevents name collision
     set undofile " Enable persistent undo files
     set undolevels=800 " Maximum number of undoing changes
     set undoreload=8000  " Maximum number of lines to save for undo
