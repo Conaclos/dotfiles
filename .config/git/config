@@ -1,0 +1,10 @@
+[user]
+    email =
+    name = Victorien Elvinger
+    signingkey =
+[commit]
+    gpgsign = true
+[push]
+    gpgSign = if-asked
+[tag]
+    forceSignAnnotated = true
