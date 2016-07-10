@@ -1,0 +1,196 @@
+# -*- muttrc -*-
+#
+# The zlib license
+#
+# Copyright (c) 2016 Victorien Elvinger
+#
+# This software is provided 'as-is', without any express or implied
+# warranty. In no event will the authors be held liable for any damages
+# arising from the use of this software.
+#
+# Permission is granted to anyone to use this software for any purpose,
+# including commercial applications, and to alter it and redistribute it
+# freely, subject to the following restrictions:
+#
+# 1. The origin of this software must not be misrepresented; you must not
+#    claim that you wrote the original software. If you use this software
+#    in a product, an acknowledgement in the product documentation would be
+#    appreciated but is not required.
+# 2. Altered source versions must be plainly marked as such, and must not be
+#    misrepresented as being the original software.
+# 3. This notice may not be removed or altered from any source distribution.
+#
+
+
+source '~/.mutt/account/default.muttrc'
+    # Default account
+
+
+# Local storage
+# -------------
+
+set header_cache='~/.cache/mutt/header'
+    # Store message headers locally to speed things up.
+
+set message_cachedir='~/.cache/mutt/message'
+    # Store messages locally to speed things up
+
+
+# Contacts
+# --------
+
+set alias_file='~/.local/share/mutt/aliases'
+
+
+# IMAP
+# ----
+
+set mail_check=60
+    # How often (in seconds) look for new mail
+set imap_check_subscribed
+    # Fetch the set of subscribed folders on connection
+set imap_idle
+    # Aattempt to use the IMAP IDLE extension to  check  for  new mail  in  the
+    # current  mailbox
+set imap_keepalive=60
+    # Maximum amount of time in seconds to wait before polling open IMAP
+    # connections, to prevent the server from  closing them.
+
+
+# Security
+# --------
+
+set ssl_force_tls
+    # Accept only secure connections
+
+# Accept only recent SSL and TLS versions
+unset ssl_use_sslv2
+unset ssl_use_sslv3
+unset ssl_use_tlsv1
+unset ssl_use_tlsv1_1
+set ssl_use_tlsv1_2
+
+
+# UI
+# --
+
+unset beep # Prevent beeps
+
+unset help
+    # Hide help bar
+
+set menu_context=5
+    # Minimal number of lines to keep above and below the cursor in menu
+set menu_scroll # Seamless index traversal
+set pager_context=5
+    # Minimal number of lines to keep above and below the cursor in pager
+set pager_stop
+    # Not move to the next  message when  you  are  at the end of a message
+
+set pager_context=3 # Display 3 lines of context in pager
+set pager_index_lines=10 # Keep pager index on top in other modes
+
+
+# Sidebar
+# -------
+
+set sidebar_short_path # Hierarchy name display
+set sidebar_width=18 # sidebar column width (including sidebar delimiter)
+set sidebar_visible
+
+
+# Conversation
+# ------------
+
+set reply_regexp='^([Rr][Ee]([\[0-9\]+])*|aw):[ \t]*'
+    # What we consider to be replies
+unset strict_threads # Lets have some fuzzy threading
+set sort=reverse-threads
+set sort_aux=last-date-received
+set thread_received # Use date received rather than date sent in thread sorting
+
+
+# Behavior
+# --------
+
+set date_format="%Y-%m-%d" # Date ISO 8601
+unset mark_old # Useless indicator
+set sleep_time=0 # Speedup folder switch
+
+
+# Attachment views
+# -----------------
+
+set mailcap_path=~/.mutt/common/mailcap
+source ~/.mutt/common/auto_views.muttrc
+
+alternative_order text/enriched text/markdown text/plain text/html
+    # First read text-based if available
+
+
+# Mail header view
+# ----------------
+
+source ~/.mutt/common/headers.muttrc
+
+
+# Plain text mail formatting
+# --------------------------
+
+set quote_regexp='^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+'
+    # What we consider to be a quotes
+unset markers # No wrap markers
+set wrap=80 # Number of columns before wrapping
+
+
+# Send
+# ----
+
+unset allow_8bit # Disable unsafe convertion
+set askcc # Prompt for cc recipients
+#set edit_headers # Let's edit mail header fields
+set hidden_host # Hide host details
+set send_charset='utf-8' # Prevent use of ASCI or ISO-8859-1
+set use_from # Use $from
+unset user_agent # Hide mail client
+
+
+# Reply
+# -----
+
+set fast_reply # Skip recipient and subject when replying
+#set include # Include message in reply
+set reverse_name # Build From: in the reply based on the To: address
+set text_flowed # Better text displaying in some mail clients
+
+
+# Forward
+# -------
+
+set attribution='* %n <%a> [%{%Y-%m-%d %H:%M %Z}]:\n'
+    # Precedes message which has been  included in a reply
+set forward_quote # Use $indent_string quote when fwd message is included
+set mime_forward # Forward message as MIME attachments
+
+
+# GPG
+# ---
+
+set crypt_use_gpgme
+set crypt_autosign
+set crypt_replysign
+set crypt_replysignencrypted
+set pgp_use_gpg_agent
+
+
+# Key bindings
+# ------------
+
+source ~/.mutt/common/binding.muttrc
+
+
+# Theme
+# -----
+
+source ~/.mutt/theme/solarized/mutt-colors-solarized-dark-256.muttrc
+

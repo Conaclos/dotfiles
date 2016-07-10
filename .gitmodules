@@ -1,0 +1,3 @@
+[submodule ".mutt/theme/solarized"]
+	path = .mutt/theme/solarized
+	url = https://github.com/altercation/mutt-colors-solarized.git
