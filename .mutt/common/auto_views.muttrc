@@ -25,6 +25,7 @@
 # Use mailcap files to specity default programs
 
 auto_view application/acrobat
+auto_view application/force-download
 auto_view application/pdf
 
 auto_view audio/*

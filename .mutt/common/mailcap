@@ -23,11 +23,12 @@
 application/octet-stream; echo %s "no matching...";
 
 application/acrobat; $BROWSER %s;
+application/force-download; $BROWSER %s;
 application/pdf; $BROWSER %s;
 
 audio/*; mocp %s;
 image/*; feh %s;
-text/html; links -dump %s; copiousoutput;
+text/html; links -html-numbered-links 1 -dump %s; copiousoutput;
     # copiousoutput invokes a pager
 video/*; mpv %s;
 
