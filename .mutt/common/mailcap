@@ -22,15 +22,25 @@
 
 application/octet-stream; echo %s "no matching...";
 
-application/acrobat; $BROWSER %s;
-application/force-download; $BROWSER %s;
-application/pdf; $BROWSER %s;
+application/pgp-keys; gpg -v --import --interactive %s; needsterminal
+
+text/html; $BROWSER %s;
+text/html; elinks -force-html -dump %s; copiousoutput
+
+text/vcard; < %s head -n -2 | tail -n +2; copiousoutput
+text/x-vcard; < %s head -n -2 | tail -n +2; copiousoutput
+
+application/acrobat; $BROWSER %s; test=test -n "$DISPLAY"
+application/force-download; $BROWSER %s; test=test -n "$DISPLAY"
+application/pdf; $BROWSER %s; test=test -n "$DISPLAY"
 
 audio/*; mocp %s;
-image/*; feh %s;
-text/html; links -html-numbered-links 1 -dump %s; copiousoutput;
-    # copiousoutput invokes a pager
-video/*; mpv %s;
 
-*/*; xdg-open %s;
+image/*; feh %s; test=test -n "$DISPLAY"
+image/*; fbv -aif %s;
+
+video/*; mpv %s; test=test -n "$DISPLAY"
+video/*; mpv -vo opengl %s;
+
+*/*; xdg-open %s; test=test -n "$DISPLAY"
 

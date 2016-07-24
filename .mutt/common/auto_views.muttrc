@@ -24,6 +24,8 @@
 
 # Use mailcap files to specity default programs
 
+auto_view application/octet-stream
+
 auto_view application/acrobat
 auto_view application/force-download
 auto_view application/pdf
@@ -32,4 +34,7 @@ auto_view audio/*
 auto_view image/*
 auto_view text/html
 auto_view video/*
+
+auto_view text/vcard
+auto_view text/x-vcard # Obsolete, but used
 
