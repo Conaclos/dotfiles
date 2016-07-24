@@ -38,10 +38,27 @@ unset move
     # Prevent mail move from spool to mbox
     # Gmail does that
 
-set folder=imaps://imap.gmail.com:993
+set folder='imaps://imap.gmail.com:993'
+    # Use TLS (port 993)
+    # Use '+' or '=' in a path to refer to this folder
 
 set mbox='+[Gmail]/All Mail'
 set postponed='+[Gmail]/Drafts' # Server folder where are postponed messages
-set record='+[Gmail]/Sent Mail' # Server folder where are sent mail
+unset record # Get rid of sent mail duplicas
 set spoolfile='+INBOX' # Server folder where e-mail arrive
+set trash='+[Gmail]/Trash'
+
+
+# Subscriptions
+# -------------
+
+#set imap_check_subscribed # Fetch the set of subscribed folders on connection
+
+mailboxes '+INBOX'
+mailboxes '+[Gmail]/All Mail'
+mailboxes '+[Gmail]/Drafts'
+mailboxes '+[Gmail]/Sent Mail'
+mailboxes '+[Gmail]/Starred'
+mailboxes '+[Gmail]/Spam'
+mailboxes '+[Gmail]/Trash'
 
