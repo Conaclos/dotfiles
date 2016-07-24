@@ -2,3 +2,6 @@
 
 export BROWSER=firefox
 
+xbindkeys
+    # Custom keyboard binding (see ~/.xbindkeysrc)
+

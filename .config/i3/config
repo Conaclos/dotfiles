@@ -150,21 +150,3 @@ new_window 1pixel
 # lock screen
 bindsym $mod+x exec "i3lock -c 000000"
 
-# master volume
-# require alsa mixer (alsa-utils)
-bindsym XF86AudioRaiseVolume exec "amixer set Master 3%+"
-bindsym XF86AudioLowerVolume exec "amixer set Master 3%-"
-bindsym XF86AudioMute exec "amixer set Master 0%"
-
-# player
-bindsym XF86AudioStop exec "mocp --stop"
-bindsym XF86AudioPrev exec "mocp --previous"
-bindsym XF86AudioNext exec "mocp --next"
-bindsym XF86AudioPlay exec "mocp --toggle-pause"
-
-# toggle touchpad
-bindsym XF86TouchpadToggle exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
-
-# quick launching
-bindsym XF86WWW exec "$BROWSER"
-
