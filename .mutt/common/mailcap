@@ -40,7 +40,7 @@ image/*; feh %s; test=test -n "$DISPLAY"
 image/*; fbv -aif %s;
 
 video/*; mpv %s; test=test -n "$DISPLAY"
-video/*; mpv -vo opengl %s;
+video/*; mpv -vo=drm %s;
 
 */*; xdg-open %s; test=test -n "$DISPLAY"
 
