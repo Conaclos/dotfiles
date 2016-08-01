@@ -2,9 +2,9 @@
 # Master volume
 # -------------
 
-"amixer set Master 3%+"
+"amixer set Master 3%+ && killall -USR1 i3status"
     XF86AudioRaiseVolume
-"amixer set Master 3%-"
+"amixer set Master 3%- && killall -USR1 i3status"
     XF86AudioLowerVolume
 "amixer set Master 0%"
     XF86AudioMute
@@ -29,7 +29,9 @@
 "$BROWSER"
     XF86Launch1
 "import /tmp/screen.png"
-    XF86WebCam
+    Print
+"urxvt"
+    Mod4 + Return
 
 
 # Device
