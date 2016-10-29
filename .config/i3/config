@@ -4,10 +4,6 @@
 # programs
 set $locker "i3lock -c 000000 && sleep 2m"
 
-# screen
-set $large_screen_1 HDMI1
-set $large_screen_2 VGA1
-
 # worspace "[order]:[name]"
 set $w1 "1"
 set $w2 "2"
@@ -24,7 +20,7 @@ set $wplay "11:°"
 set $mod Mod4
     # Super key
 
-font pango:Inconsolata 10
+font pango:Inconsolata 12
 
 
 # key binding
@@ -138,9 +134,9 @@ bindsym $mod+r mode "resize"
 
 
 mode "power" {
-    bindsym s exec --no-startup-id $locker && suspend, mode "default"
-    bindsym r exec --no-startup-id reboot, mode "default"
-    bindsym p exec --no-startup-id poweroff, mode "default"
+    bindsym s exec --no-startup-id $locker && systemctl suspend, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -160,8 +156,7 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # ---------
 
 # large screen workspace
-workspace $wplay output $large_screen_1
-workspace $wplay output $large_screen_2
+workspace $wplay output HDMI1
 
 # Assign clients to their workspaces
 assign [class="thunderbird|gear"] $wmail
