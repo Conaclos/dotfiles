@@ -2,12 +2,19 @@
 # Master volume
 # -------------
 
-"amixer set Master 3%+ && killall -USR1 i3status"
+"amixer set Master 3%+"
     XF86AudioRaiseVolume
-"amixer set Master 3%- && killall -USR1 i3status"
+"amixer set Master 3%+"
+    Mod4 + XF86AudioRaiseVolume
+"amixer set Master 3%-"
     XF86AudioLowerVolume
-"amixer set Master 0%"
+"amixer set Master 3%-"
+    Mod4 + XF86AudioLowerVolume
+"amixer set Master toggle"
     XF86AudioMute
+"amixer set Master toggle"
+    Mod4 + XF86AudioMute
+
 
 
 # Music player
