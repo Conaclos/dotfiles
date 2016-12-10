@@ -1,0 +1,322 @@
+# See /usr/share/doc/moc/config.example
+
+ReadTags = yes
+    # Show file titles (title, author, album) instead of file names?
+
+MusicDir =${XDG_MUSIC_DIR:-~/Music}
+    # Music directory or playlist.
+    # Use -m parameter or m command to go to this.
+
+#StartInMusicDir = no
+    # Start in `MusicDir'?
+    # Otherwise in $PWD
+
+
+# Error printing
+# --------------
+
+#ShowStreamErrors = no
+    # Show errors in the streams (e.g. broken frames in MP3 files)?
+
+#MP3IgnoreCRCErrors = yes
+    # Ignore CRC errors in MP3 files?
+
+
+# Play
+# ----
+
+# Set playback toggles.
+Repeat = no
+Shuffle = no
+AutoNext = yes
+
+# Default FormatString:
+#
+#   %n - Track number
+#   %a - Artist
+#   %A - Album
+#   %t - Title
+#   %(X:TRUE:FALSE) - Ternary expression: if X exists, do TRUE,
+#                     otherwise FALSE.  The escape character must
+#                     be doubled (i.e., '\\').  (See zshmisc
+#                     documentation for more information.)
+#
+#FormatString = "%(n:%n :)%(a:%a - :)%(t:%t:)%(A: \(%A\):)"
+
+# Input and output buffer sizes (in kilobytes).
+#InputBuffer = 512                  # Minimum value is 32KB
+#OutputBuffer = 512                 # Minimum value is 128KB
+
+# How much to fill the input buffer before playing (in kilobytes)?
+# This can't be greater than the value of InputBuffer.  While this has
+# a positive effect for network streams, it also causes the broadcast
+# audio to be delayed.
+#Prebuffering = 64
+
+SoundDriver = ALSA:JACK:OSS
+    # Priority list.
+
+Softmixer_SaveState = no
+    # Save mixer setting in '~/.moc/softmixer' when the server is shut down?
+    #
+    # Note: There is a "hidden" 'Amplification' setting in that file.
+    # Amplification (0-200) is used to scale the mixer setting (0-100).
+    # This results in a higher signal amplitude but may also produce clipping.
+
+Equalizer_SaveState = no
+    # Save equalizer setting in '~/.moc/equalizer' when the server is shut down?
+    # Note: There is a "hidden" 'Mixin' setting in that file.
+    # Mixin (0.0-1.0) is used to determine how much of the original signal is
+    # used after equalizing.
+    # 0 means to only use the equalized sound, while 1 effectively disabled the
+    # mixer. The default is 0.25.
+
+ShowFormat = no
+    # Show file format in menu?
+
+#ShowTime = IfAvailable
+    # Show file time in menu?
+    # yes | no | IfAvailable
+
+Theme = darkdot_theme
+    # Absolue path or relative one (base: /usr/share/moc/themes/)
+
+AutoLoadLyrics = no
+    # Should MOC try to autoload the default lyrics file for an audio?
+    # default lyrics file is a text file with the same file name as the audio
+    # file name with any trailing "extension" removed.)
+
+MOCDir = ${XDG_CACHE_HOME:-~/.cache}/moc
+    # MOC dir. where pid file, socket and state files are stored.
+
+#UseMimeMagic = no
+    # Use MIME to identify audio files.  This can make for slower loading
+    # of playlists but is more accurate than using "extensions".
+
+
+# Playlist
+# --------
+
+#SavePlaylist = yes
+    # Remember the playlist after exit?
+
+#Keymap =
+    # Key mapping file
+    # Absolute path or relative one (base: ~/.moc/)
+
+# Fast dir access. key bindings are in the `keymap' file
+#Fastdir1 =
+#Fastdir2 =
+#Fastdir3 =
+#Fastdir4 =
+#Fastdir5 =
+#Fastdir6 =
+#Fastdir7 =
+#Fastdir8 =
+#Fastdir9 =
+#Fastdir10 =
+
+
+# Other
+# -----
+
+ResampleMethod = SincFastest
+    # See http://www.mega-nerd.com/libsamplerate/api_misc.html#Converters
+    #
+    # Methods based on bandlimited interpolation (higher quality, but slower):
+    #   SincBestQuality     - Slow. Worst case Signal-to-Noise Ratio is 97dB.
+    #   SincMediumQuality   - much faster.
+    #   SincFastest         - the fastest bandlimited interpolation.
+    #
+    # Lower quality, but much faster methods:
+    #   ZeroOrderHold       - really poor quality, but it's really fast.
+    #   Linear              - a bit better and a bit slower.
+
+Allow24bitOutput = yes
+    # Default: disabled because some soundcards prevent MP3 files from playing
+
+# The number of audio files for which MOC will cache tags.  When this limit
+# is reached, file tags are discarded on a least recently used basis (with
+# one second resolution).  You can disable the cache by giving it a size of
+# zero.  Note that if you decrease the cache size below the number of items
+# currently in the cache, the number will not decrease immediately (if at
+# all).
+#TagsCacheSize = 256
+
+# Main window layouts can be configured.  You can change the position and
+# size of the menus (directory and playlist).  You have three layouts and
+# can switch between then using the 'l' key (standard mapping).  By default,
+# only two layouts are configured.
+#
+# The format is as follows:
+#
+#     - Each layout is described as a list of menu entries.
+#     - Each menu entry is of the form:
+#
+#           menu(position_x, position_y, width, height)
+#
+#       where 'menu' is either 'directory' or 'playlist'.
+#     - The parameters define position and size of the menu.  They can
+#       be absolute numbers (like 10) or a percentage of the screen size
+#       (like 45%).
+#     - 'width' and 'height' can have also value of 'FILL' which means
+#        fill the screen from the menu's position to the border.
+#     - Menus may overlap.
+#
+# You must describe at least one menu (default is to fill the whole window).
+# There must be at least one layout (Layout1) defined; others can be empty.
+#
+# Example:    Layout1 = playlist(50%,50%,50%,50%)
+#             Layout2 = ""
+#             Layout3 = ""
+#
+#             Just one layout, the directory will occupy the whole
+#             screen, the playlist will have 1/4 of the screen size
+#             and be positioned at lower right corner.  (Note that
+#             because the playlist will be hidden by the directory
+#             you will have to use the TAB key to make the playlist
+#             visible.)
+#
+# Example:    Layout1 = playlist(0,0,100%,10):directory(0,10,100%,FILL)
+#
+#             The screen is split into two parts: playlist at the top
+#             and the directory menu at the bottom.  Playlist will
+#             occupy 10 lines and the directory menu the rest.
+#
+Layout1 = directory(0,0,100%,100%):playlist(0,0,100%,100%)
+Layout2 = directory(0,0,50%,100%):playlist(50%,0,FILL,100%)
+#Layout3 = ""
+
+# Executing external commands (1 - 10) invoked with key commands (F1 - F10
+# by default).
+#
+# Some arguments are substituted before executing:
+#
+#     %f - file path
+#     %i - title made from tags
+#     %S - start block mark (in seconds)
+#     %E - end block mark (in seconds)
+#
+# Data from tags can also be substituted:
+#
+#     %t - title
+#     %a - album
+#     %r - artist
+#     %n - track
+#     %m - time of the file (in seconds)
+#
+# The parameters above apply to the currently selected file.  If you change
+# them to capital letters, they are taken from the file currently playing.
+#
+# Programs are run using execv(), not a shell, so you can't do things like
+# redirecting the output to a file.  The command string is split using blank
+# characters as separators; the first element is the command to be executed
+# and the rest are its parameters, so if you use "echo Playing: %I" we run
+# program 'echo' (from $PATH) with 2 parameters: the string 'Playing:' and
+# the title of the file currently playing.  Even if the title contains
+# spaces, it's still one parameter and it's safe if it contains `rm -rf /`.
+#
+# Examples:   ExecCommand1 = "cp %f /mnt/usb_drive"
+#             ExecCommand2 = "/home/joe/now_playing %I"
+#
+#ExecCommand1 =
+#ExecCommand2 =
+#ExecCommand3 =
+#ExecCommand4 =
+#ExecCommand5 =
+#ExecCommand6 =
+#ExecCommand7 =
+#ExecCommand8 =
+#ExecCommand9 =
+#ExecCommand10 =
+
+# Self-describing ModPlug options (with 'yes' or 'no' values).
+#ModPlug_Oversampling = yes
+#ModPlug_NoiseReduction = yes
+#ModPlug_Reverb = no
+#ModPlug_MegaBass = no
+#ModPlug_Surround = no
+
+#ModPlug_ResamplingMode = FIR
+    #   FIR         - 8 tap fir filter (extremely high quality)
+    #   SPLINE      - Cubic spline interpolation (high quality)
+    #   LINEAR      - Linear interpolation (fast, good quality)
+    #   NEAREST     - No interpolation (very fast, extremely bad sound quality)
+
+# Other self-describing ModPlug audio characteristic options.
+# (Note that the 32 bit sample size seems to be buggy.)
+#ModPlug_Channels = 2               # 1 or 2 channels
+#ModPlug_Bits = 16                  # 8, 16 or 32 bits
+#ModPlug_Frequency = 44100          # 11025, 22050, 44100 or 48000 Hz
+#ModPlug_ReverbDepth = 0            # 0 (quiet) to 100 (loud)
+#ModPlug_ReverbDelay = 0            # Delay in ms (usually 40-200ms)
+#ModPlug_BassAmount = 0             # 0 (quiet) to 100 (loud).
+#ModPlug_BassRange = 10             # Cutoff in Hz (10-100).
+#ModPlug_SurroundDepth = 0          # Surround level 0(quiet)-100(heavy).
+#ModPlug_SurroundDelay = 0          # Surround delay in ms, usually 5-40ms.
+#ModPlug_LoopCount = 0              # 0 (never), n (times) or -1 (forever)
+
+# Self-describing TiMidity audio characteristic options.
+#TiMidity_Rate = 44100              # Between 8000 and 48000
+#TiMidity_Bits = 16                 # 8 or 16
+#TiMidity_Channels = 2              # 1 or 2
+#TiMidity_Volume = 100              # 0 to 800
+
+# You can setup a TiMidity-Config-File here.
+# Leave it unset to use library defaults (/etc/timidity.cfg mostly).
+# Setting it to 'yes' also uses the library defaults.
+# Set it to 'no' if you don't have any configuration file.
+# Otherwise set it to the name of a specific file.
+#TiMidity_Config =
+
+# Self-describing SidPlay2 audio characteristic options.
+#SidPlay2_DefaultSongLength = 180   # If not in database (in seconds)
+#SidPlay2_MinimumSongLength = 0     # Play at least n (in seconds)
+#SidPlay2_Frequency = 44100         # 4000 to 48000
+#SidPlay2_Bits = 16                 # 8 or 16
+#SidPlay2_Optimisation = 0          # 0 (worst quality) to 2 (best quality)
+
+# Set path to a HVSC-compatible database (if not set, database is disabled).
+#SidPlay2_Database =
+
+# SidPlay2 playback Mode:
+#
+#     "M": Mono (best for many SIDs)
+#     "S": Stereo
+#     "L"/"R": Left / Right
+#
+#SidPlay2_PlayMode = "M"
+
+# Use start-song information from SID ('yes') or start at first song
+# ('no').  Songs before the start-song won't be played.  (Note that this
+# option previously took the values 1 and 0; these are now deprecated
+# in favour of 'yes' and 'no'.)
+#SidPlay2_StartAtStart = yes
+
+# Play sub-tunes.  (Note that this option previously took the values 1
+# and 0; these are now deprecated in favour of 'yes' and 'no'.)
+#SidPlay2_PlaySubTunes = yes
+
+
+# Events
+# ------
+# Specify the full path (i.e. no leading '~') of the executables to run.
+# No pipes/redirects can be used directly, but a shell script can do the job.
+
+#OnSongChange =
+    # Run when a new song starts playing.
+    # Arguments:
+    #   %a artist       %r album        %f filename     %t title
+    #   %n track        %d file duration in XX:YY form
+    #   %D file duration, number of seconds
+    #
+    # Example:    OnSongChange = "/home/jack/.moc/myscript %a %r"
+
+#RepeatSongChange = no
+    # Execute the command every time a song starts playing regardless of whether
+    # or not it is just repeating?
+
+#OnStop =
+    # Run when MOC changes state to stopped
+    # i.e., when user stopped playing or changes a song.
+
