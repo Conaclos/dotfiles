@@ -1,24 +1,7 @@
 # -*- muttrc -*-
 #
 # The zlib license
-#
-# Copyright (c) 2016 Victorien Elvinger
-#
-# This software is provided 'as-is', without any express or implied
-# warranty. In no event will the authors be held liable for any damages
-# arising from the use of this software.
-#
-# Permission is granted to anyone to use this software for any purpose,
-# including commercial applications, and to alter it and redistribute it
-# freely, subject to the following restrictions:
-#
-# 1. The origin of this software must not be misrepresented; you must not
-#    claim that you wrote the original software. If you use this software
-#    in a product, an acknowledgement in the product documentation would be
-#    appreciated but is not required.
-# 2. Altered source versions must be plainly marked as such, and must not be
-#    misrepresented as being the original software.
-# 3. This notice may not be removed or altered from any source distribution.
+# Copyright (c) 2017 Victorien Elvinger
 #
 
 
@@ -26,19 +9,27 @@ bind pager Q toggle-quoted
 bind index,pager R group-reply
 
 
+# IMAP sync.
+# ----------
+
+macro index o "<shell-escape>offlineimap -q<enter>" "quick remote sync."
+macro index O "<shell-escape>offlineimap<enter>" "remote sync."
+
+
 # Sidebar
 # -------
+# use :exec what-key to know the key code
 
-bind index,pager B sidebar-toggle-visible
+bind index,pager \Ch sidebar-toggle-visible
     # Sidebar visibility toggler
 
-bind index,pager k sidebar-prev
+bind index,pager \Ck sidebar-prev
     # Ctrl-p to select previous folder
 
-bind index,pager \Co sidebar-open
+bind index,pager \Cl sidebar-open
     # Ctrl-o to open selected folder
 
-bind index,pager j sidebar-next
+bind index,pager \Cj sidebar-next
     # Ctrl-n to select next folder
 
 
@@ -50,4 +41,10 @@ bind index G last-entry
 
 bind pager gg top
 bind pager G bottom
+
+bind pager <up> previous-line
+bind pager <down> next-line
+
+bind pager k previous-line
+bind pager j next-line
 
