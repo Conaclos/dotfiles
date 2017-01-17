@@ -36,7 +36,7 @@ set textwidth=80 " Ideal maximum width of a line
 if empty($XDG_DATA_HOME)
     let $VIM_DATA_HOME=$HOME.'/.local/share/vim'
 else
-    let $VIM_DATA_HOME=$XDG_DATA_HOME
+    let $VIM_DATA_HOME=$XDG_DATA_HOME.'/vim'
 endif
 
 set runtimepath+=$VIM_DATA_HOME " Add $VIM_DATA_HOME as runtime directory
