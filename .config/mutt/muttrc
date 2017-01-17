@@ -12,7 +12,7 @@
 
 
 set mbox_type=Maildir # One file per mail
-source '~/.config/neomutt/account/personal.muttrc' # Default account
+source '~/.config/mutt/account/personal.muttrc' # Default account
 
 set header_cache='~/.cache/mutt/header'
     # Store message headers locally to speed things up.
@@ -93,8 +93,8 @@ set keywords_standard = yes # Save tags in keywords: header
 # Attachment views
 # -----------------
 
-set mailcap_path=~/.config/neomutt/common/mailcap
-source ~/.config/neomutt/common/auto_views.muttrc
+set mailcap_path=~/.config/mutt/common/mailcap
+source ~/.config/mutt/common/auto_views.muttrc
 
 alternative_order text/enriched text/markdown text/plain text/html
     # First read text-based if available (multipart mail)
@@ -167,6 +167,6 @@ set pgp_use_gpg_agent
 # Other
 # -----
 
-source '~/.config/neomutt/common/binding.muttrc' # Key bindings
-source '~/.config/neomutt/theme/solarized/mutt-colors-solarized-dark-256.muttrc'
+source '~/.config/mutt/common/binding.muttrc' # Key bindings
+source '~/.config/mutt/theme/solarized/mutt-colors-solarized-dark-256.muttrc'
 

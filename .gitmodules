@@ -1,3 +1,3 @@
 [submodule "mutt/theme/solarized"]
-	path = .config/neomutt/theme/solarized
+	path = .config/mutt/theme/solarized
 	url = https://github.com/altercation/mutt-colors-solarized.git
