@@ -196,3 +196,6 @@ new_window 1pixel
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
+for_window [class="^Ec$"] floating enable
+for_window [class="^Estudio$"] floating enable
+
