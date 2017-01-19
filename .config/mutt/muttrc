@@ -136,6 +136,8 @@ set use_envelope_from # add sender with -f
 unset user_agent # Hide mail client
 
 # Reply
+set attribution='%?n?%n ?<%a> on %{%Y-%m-%d %H:%M}:\n'
+    # Precedes message which has been  included in a reply
 set fast_reply # Skip recipient and subject when replying
 set ignore_list_reply_to # Ignore reply-to: when included in to:
 #set include # Include message in reply
@@ -145,11 +147,9 @@ set reverse_name
     # if matches $alternates
 
 # Forward
-set attribution='* %n <%a> [%{%Y-%m-%d %H:%M %Z}]:\n'
-    # Precedes message which has been  included in a reply
 set forward_quote # Use $indent_string quote when fwd message is included
-#set mime_forward # Forward message as MIME attachments
 set mime_forward_rest # Forward attachments
+set forward_format='fw: %s' # Default subject %a: author  %s: fw mail's subject
 
 
 # GPG
