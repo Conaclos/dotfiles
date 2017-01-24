@@ -2,13 +2,20 @@
     email =
     name = Victorien Elvinger
     signingkey =
+[[apply]
+    whitespace = fix
+[[color "diff"]
+     whitespace = red reverse
 [commit]
     gpgsign = true
+[log]
+    showSignature = true
 [push]
     gpgSign = if-asked
 [tag]
     forceSignAnnotated = true
 [alias]
     changelog = "!_() { t=$(git describe --abbrev=0 --tags); git log ${t}..HEAD --no-merges --pretty=format:'* %s'; }; _"
-[log]
-    showSignature = true
+    checkout-pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
+    graphlog = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset'
+    s = status --short
