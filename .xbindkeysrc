@@ -37,8 +37,6 @@
     XF86Launch1
 "import /tmp/screen.png"
     Print
-"urxvt"
-    Mod4 + Return
 
 
 # Device

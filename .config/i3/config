@@ -3,6 +3,7 @@
 
 # programs
 set $locker "i3lock -c 000000 && sleep 2m"
+set $term "termite"
 
 # worspace "[order]:[name]"
 set $w1 "1"
@@ -145,6 +146,7 @@ mode "power" {
 bindsym $mod+Pause mode "power"
 
 # app laucnh
+bindsym $mod+Return exec $term
 bindsym $mod+x exec $locker
     # screen locker
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
