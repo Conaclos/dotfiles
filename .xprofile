@@ -1,7 +1,11 @@
 #!/bin/sh
 
+# Sourced on startup of X
+# Should contain X application-specific env variables
+
+
 export BROWSER=firefox
 
-xbindkeys
+type xbindkeys > /dev/null && xbindkeys
     # Custom keyboard binding (see ~/.xbindkeysrc)
 
