@@ -191,13 +191,14 @@ bar {
 # UI
 # --
 
-new_window 1pixel
+new_window pixel 1
     # hide the titlebar
 
 # Custom window manager behavior
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
+#for_window [window_role="pop-up"] floating enable
+#for_window [window_role="task_dialog"] floating enable
 
 for_window [class="^Ec$"] floating enable
 for_window [class="^Estudio$"] floating enable
 
+for_window [class="mpv|mplayer|Vlc"] fullscreen enable
