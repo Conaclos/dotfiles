@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Must be sourced on startup of a login shell, after $XDG_CONFIG_HOME/shell/env
+# Should not change the shell env
+
+test -x '/usr/bin/fortune' && test -x '/usr/bin/cowsay' &&
+    fortune ${XDG_DATA_HOME:-~'/.local/share'}/fortune | cowsay -f tux
+    # Personal fortunes
+

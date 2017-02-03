@@ -1,0 +1,71 @@
+#!/bin/sh
+
+# Must be sourced on all shell invocations and before others
+# Should only contain important user-specific env variables
+# Should not contain commands that produce outputs
+
+
+# XDG
+# ---
+
+# XDG Base Dirs
+# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+#export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME'/.local/share'}
+    # Single dir where app should write user-specific data
+#export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME'/.config'}
+    # Single dir where app should write user-specific config
+#export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME'/.cache'}
+    # Single dir where app should write user-specific non-essential data
+#export XDG_DATA_DIRS=${XDG_DATA_DIRS:-'/usr/local/share/:/usr/share/'}
+    # Extra dirs where to search user-specific data
+    # Preference-ordered set of dirs seperated with a colon ':'.
+#export XDG_CONFIG_DIRS=${XDG_CONFIG_DIRS:-'/etc/xdg'}
+    # Extra dirs where to search user-specific config
+    # Preference-ordered set of dirs seperated with a colon ':'.
+
+# $XDG_RUNTIME_DIR should be set by the system. Its access mode MUST be 0700
+
+# XDG User Dirs
+. ${XDG_CONFIG_HOME:-$HOME'/.config'}'/user-dirs.dirs'
+export XDG_DESKTOP_DIR
+export XDG_DOCUMENTS_DIR
+export XDG_DOWNLOAD_DIR
+export XDG_MUSIC_DIR
+export XDG_PICTURES_DIR
+export XDG_PUBLICSHARE_DIR
+export XDG_VIDEOS_DIR
+
+
+# XDG fix
+# -------
+
+export CARGO_HOME=${XDG_DATA_HOME:-$HOME'/.local/share'}'/cargo'
+    # Cargo (Rust)
+
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR'/ssh-agent.socket'
+
+export XAUTHORITY=$XDG_RUNTIME_DIR'/Xauthority'
+
+
+# Default program
+# ---------------
+
+export PAGER='/usr/bin/less'
+export VISUAL='/usr/bin/vim'
+
+# X applications can be set in ~/.xprofile
+# Fallback should be a console application
+export BROWSER=${BROWSER:-'/usr/bin/elinks'}
+export EDITOR=${EDITOR:-$VISUAL}
+export SUDO_EDITOR=${SUDO_EDITOR:-$VISUAL}
+
+# rsync
+export RSYNC_RSH='/usr/bin/ssh' # Enforce encryption
+export CVS_RSH='/usr/bin/ssh' # Prevent use of RSH
+
+
+# Config
+# ------
+
+export IRCNICK='conaclos' # IRC nickname
+

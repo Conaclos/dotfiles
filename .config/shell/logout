@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Must be sourced on exit of a login shell.
+
+if [ ! $DISPLAY ]; then
+    reset # Reset console for privacy
+fi
+
