@@ -3,9 +3,6 @@
 # Sourced on `startx` and ` xinit`.
 # Display manager don't source it.
 
-
-. ~/.xprofile
-
 xrdb -merge ~/.Xresources
     # use xressources
 

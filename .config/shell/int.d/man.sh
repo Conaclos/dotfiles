@@ -1,10 +1,8 @@
 #!/bin/sh
 
-alias man="env LESS_TERMCAP_mb=$'\E[01;31m' \
-    LESS_TERMCAP_md=$'\E[01;31m' \
-    LESS_TERMCAP_me=$'\E[0m' \
-    LESS_TERMCAP_se=$'\E[0m' \
-    LESS_TERMCAP_so=$'\E[01;44;33m' \
-    LESS_TERMCAP_ue=$'\E[0m' \
-    LESS_TERMCAP_us=$'\E[01;32m' man"
+alias man='env LESS_TERMCAP_md=$(tput bold; tput setaf 1)\
+    LESS_TERMCAP_me=$(tput sgr0)\
+    LESS_TERMCAP_so=$(tput bold; tput rev; tput setaf 3)\
+    LESS_TERMCAP_se=$(tput sgr0)\
+    LESS_TERMCAP_us=$(tput bold; tput setaf 2) man'
 

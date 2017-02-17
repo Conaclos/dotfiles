@@ -174,7 +174,6 @@ bar {
     mode hide
     position top
     status_command i3status
-    tray_output none
     strip_workspace_numbers yes
         # Prefer workspace name to number
     colors {
@@ -202,3 +201,4 @@ for_window [class="^Ec$"] floating enable
 for_window [class="^Estudio$"] floating enable
 
 for_window [class="mpv|mplayer|Vlc"] fullscreen enable
+
