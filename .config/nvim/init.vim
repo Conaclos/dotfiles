@@ -173,9 +173,6 @@ nnoremap Y y$
     " default: "Y" acts as "yy"
     " Same behavior as D and C
 
-cnoremap w!! w !sudo tee > /dev/null %
-    " Wwrite in sudo
-
 set pastetoggle=<F2>
     " Toggle between nopaste and paste mode
     " Paste mode prevents indenting
