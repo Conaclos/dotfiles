@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# Must be sourced on all shell invocations and before others
-# Should only contain important user-specific env variables
-# Should not contain commands that produce outputs
-
