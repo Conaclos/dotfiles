@@ -152,6 +152,9 @@ bindsym $mod+x exec $locker
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
     # program (.desktop) launcher
     # i3-dmenu-desktop is a wrapper around dmenu
+bindsym $mod+p exec --no-startup-id passmenu
+    # program (.desktop) launcher
+    # i3-dmenu-desktop is a wrapper around dmenu
 
 
 # workspace
