@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 # Should only contain widgets and zle key-bindings
-# Use <Shift><v> in your terminal to know the hardcoded key
+# Use <Ctrl><v> in your terminal to know the hardcoded key
 # Prefer use "standard" keys if possible
 #
 # terminfo[kcbt]    <Shift><Tab>
@@ -50,7 +50,7 @@ sudo-toggle() {
 zle -N sudo-toggle
 
 bindkey '^@' sudo-toggle
-    # <ctrl><space>
+    # <Ctrl><space>
 
 
 # Favorite cmds
