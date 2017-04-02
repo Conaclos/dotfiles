@@ -50,6 +50,20 @@ sudo-toggle() {
 zle -N sudo-toggle
 
 bindkey '^@' sudo-toggle
+    # <ctrl><space>
+
+
+# Favorite cmds
+# -------------
+
+cmd-menu() {
+    # Open the menu then print the slected cmd.
+    BUFFER=''
+    LBUFFER=$(fzf < ${XDG_DATA_HOME:-$HOME'/.local/share'}'/shell/command_book')
+}
+zle -N cmd-menu
+
+bindkey '²' cmd-menu
 
 
 # Menu
