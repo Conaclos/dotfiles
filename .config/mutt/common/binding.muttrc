@@ -36,9 +36,13 @@ bind index,pager \Cj sidebar-next
 # Vim-like
 # --------
 
+bind index g noop
+    # Disable for proper override
 bind index gg first-entry
 bind index G last-entry
 
+bind pager g noop
+    # Disable for proper override
 bind pager gg top
 bind pager G bottom
 

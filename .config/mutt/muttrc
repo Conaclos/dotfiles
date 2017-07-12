@@ -130,7 +130,10 @@ unset allow_8bit # Disable unsafe convertion
 set askcc # Prompt for cc recipients
 set hidden_host # Hide host details
 set send_charset='utf-8' # Prevent use of ASCI or ISO-8859-1
-set text_flowed # Better text displaying in some mail clients
+set text_flowed
+    # Better displaying of text mail in mail clients
+    # Trailing space at line end => soft break
+    # line break => hard line break
 set use_from # Use $from
 set use_envelope_from # add sender with -f
 unset user_agent # Hide mail client
