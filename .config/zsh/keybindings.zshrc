@@ -20,7 +20,6 @@ bindkey "${terminfo[knp]}" down-line-or-history
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
-
 soft-reset() {
     tput reset
     zle redisplay
