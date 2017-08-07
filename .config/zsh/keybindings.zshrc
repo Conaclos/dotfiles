@@ -21,6 +21,28 @@ bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
 
+soft-reset() {
+    tput reset
+    zle redisplay
+}
+zle -N soft-reset
+bindkey '^L' soft-reset
+    # <Ctrl>l
+    # Override clear command
+
+defer-cmd-or-bg() {
+    if test $#BUFFER -eq 0; then
+        bg
+        zle redisplay
+    else
+        # Defer command
+        zle push-input
+    fi
+}
+zle -N defer-cmd-or-bg
+bindkey '^Z' defer-cmd-or-bg
+
+
 # Sudo
 # ----
 
