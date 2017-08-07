@@ -70,21 +70,19 @@ sudo-toggle() {
     esac
 }
 zle -N sudo-toggle
-
 bindkey '^@' sudo-toggle
     # <Ctrl><space>
 
 
-# Favorite cmds
-# -------------
+# Command book
+# ------------
 
 cmd-menu() {
-    # Open the menu then print the slected cmd.
+    # Open the menu then print the selected command.
     BUFFER=''
     LBUFFER=$(fzf < ${XDG_DATA_HOME:-$HOME'/.local/share'}'/shell/command_book')
 }
 zle -N cmd-menu
-
 bindkey '²' cmd-menu
 
 
