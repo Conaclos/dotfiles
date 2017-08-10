@@ -20,6 +20,7 @@ bindkey "${terminfo[knp]}" down-line-or-history
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
+
 soft-reset() {
     tput reset
     zle redisplay
@@ -30,7 +31,7 @@ bindkey '^L' soft-reset
     # Override clear command
 
 defer-cmd-or-bg() {
-    if test $#BUFFER -eq 0; then
+    if test -z "$BUFFER"; then
         bg
         zle redisplay
     else

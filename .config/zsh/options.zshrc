@@ -85,7 +85,7 @@ setopt PROMPT_SUBST # Enable PROMPT expansion
 
 unsetopt CLOBBER
     # Disallow ‘>’ redirection to truncate existing files (safety)
-    # Use ‘>!’ or ‘>|’ for this.
+    # Use ‘>!’ or POSIX ‘>|’ for this.
 
 unsetopt CORRECT # Don't try to correct the spelling of commands
 
