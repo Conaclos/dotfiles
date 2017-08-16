@@ -1,0 +1,50 @@
+
+[options]
+cursor_blink=off
+    # "system", "on" or "off"
+font=Inconsolata-g 12
+scroll_on_keystroke=true
+scroll_on_output=false
+
+
+[colors]
+# Tomorrow-Night-Bright
+
+background=#1d1f21
+foreground=#c5c8c6
+
+#cursor=#aeafad
+    # This is commented to preserve reversed colors
+
+# Black and Grey
+color0=#000000
+color8=#666666
+
+# Red and Bright Red
+color1=#912226
+color9=#cc6666
+
+# Green and Bright Green
+color2=#778900
+color10=#b5bd68
+
+# Yellow (Orange) and Bright Yellow (Yellow)
+color3=#ae7b00
+color11=#f0c674
+
+# Blue and Bright Blue
+color4=#1d2594
+color12=#81a2be
+
+# Magenta (Purple) and Bright Magenta
+color5=#682a9b
+color13=#b294bb
+
+# Cyan (Aqua) and Bright Cyan
+color6=#2b6651
+color14=#8abeb7
+
+# Light Grey (Selection) and White (Current Line)
+color7=#929593
+color15=#ecebec
+
