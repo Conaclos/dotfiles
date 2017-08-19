@@ -36,7 +36,7 @@ Enable `browser.showQuitWarning`
 
 ## Disable Go back on pressing of middle mouse
 
-Have you already noticed that pressing your middle mouse, out of an hyperlink,
+Did you already notice that pressing your middle mouse, out of an hyperlink,
  loads a previous page?
 
 I have encontred this behavior too many times...
@@ -51,16 +51,7 @@ Would you like take the control over your browser?
 Enable `accessibility.blockautorefresh`
 
 
-## Privacy fixes
-
-Enable `privacy.donottrackheader.enable`
-
-Enable `network.dns.disablePrefetch`
-
-Disable `network.dns.prefetch-next`
-
-
-### Remove session data, except some cookie
+## Remove session data, except some cookie
 
 Go to **Privacy** tab of Firefox preferences and set the following options:
 
@@ -69,8 +60,8 @@ Go to **Privacy** tab of Firefox preferences and set the following options:
 Firefox will: `Use custom settings for history`
 
 - [ ] Always use private browsing mode
-  - [x] Remember my browsing and download history
-  - [x] Remember search and form history
+  - [ ] Remember my browsing and download history
+  - [ ] Remember search and form history
   - [x] Accept cookies from sites
       - Accept third party cookies: `Never`
       - Keep until: `I close Firefox`
