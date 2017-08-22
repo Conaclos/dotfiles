@@ -23,9 +23,11 @@ set undoreload=8000 " Maximum number of lines to save for undo
 " Colors
 " ------
 
-colorscheme Tomorrow-Night
+colorscheme Tomorrow-Night " Themes in $XDG_CONFIG_HOME'/nvim/colors'
 set background=dark " Adapt colors to a dark background
 set termguicolors " True color
+
+syntax on " Syntax highlighting
 
 
 " UI
