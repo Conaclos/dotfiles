@@ -43,6 +43,8 @@ set nostartofline " Leave the cursor where it was for a bunch of commands
 set showmatch " Matching brackets when the cursor is over them (similar to %)
 set matchtime=2 " How many tenths of a second to blink when matching brackets
 
+set mouse=v " Enable mouse support in visual mode
+
 set nowrap " No line wrapping
 
 set iskeyword=_,#,$,@,% " Are not word separators
