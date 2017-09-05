@@ -5,6 +5,6 @@
 #
 
 command -v 'cargo' > /dev/null 2>&1 &&
-    export CARGO_HOME=${XDG_DATA_HOME:-$HOME'/.local/share'}'/cargo'
+    export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
         # Cargo (Rust) - XDG fix
 
