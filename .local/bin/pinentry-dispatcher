@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -n $DISPLAY ]; then
+if test -n "$DISPLAY"; then
     exec /usr/bin/pinentry-gtk-2 "$@"
 else
     exec /usr/bin/pinentry-tty "$@"

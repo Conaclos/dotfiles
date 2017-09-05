@@ -92,8 +92,8 @@ CHR 40;33;01 # character device driver
 .xpm 00;36
 
 # Vector image format
-.svg 08;36
-.svgz 08;36
+.svg 00;36
+.svgz 00;36
 
 # audio format
 .ogg 01;35
