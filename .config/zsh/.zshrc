@@ -8,13 +8,13 @@
 zmodload -a zsh/stat zstat
 zmodload -a zsh/zpty zpty
 
-. $ZDOTDIR'/options.zshrc' # Zsh options
-. $ZDOTDIR'/prompt.zshrc' # Zsh prompt
-. $ZDOTDIR'/keybindings.zshrc' # Zle key bindings
-. $ZDOTDIR'/comp.zshrc' # Completion enhancements
+. "$ZDOTDIR/options.zshrc" # Zsh options
+. "$ZDOTDIR/prompt.zshrc" # Zsh prompt
+. "$ZDOTDIR/keybindings.zshrc" # Zle key bindings
+. "$ZDOTDIR/comp.zshrc" # Completion enhancements
 
-. $ZDOTDIR'/autosuggestions.zshrc'
-. $ZDOTDIR'/highlighting.zshrc'
+. "$ZDOTDIR/autosuggestions.zshrc"
+. "$ZDOTDIR/highlighting.zshrc"
 
-. ${XDG_CONFIG_HOME:-$HOME/.config}'/shell/int'
+. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/int"
 

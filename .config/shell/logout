@@ -2,7 +2,7 @@
 
 # Must be sourced on exit of a login shell.
 
-if [ ! $DISPLAY ]; then
+if test -z "$DISPLAY"; then
     reset # Reset console for privacy
 fi
 

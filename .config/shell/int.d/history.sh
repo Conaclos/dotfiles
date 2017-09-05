@@ -1,10 +1,10 @@
 #!/bin/sh
 
-export HISTFILE=${XDG_CACHE_HOME:-$HOME'/.cache'}'/shell/history'
+if test -z "$XDG_RUNTIME_DIR"; then
+    HISTFILE='/dev/null'
+else
+    HISTFILE="$XDG_RUNTIME_DIR"'/shell-history'
+fi
 
-alias histfa='chmod u+w $HISTFILE; sleep 1; fc -W; chmod u-w $HISTFILE'
-    # Force history append
-alias histfe='chmod u+w $HISTFILE; $EDITOR $HISTFILE; chmod u-w $HISTFILE'
-    # Force history edit
 alias histime='fc -il 1'
 
