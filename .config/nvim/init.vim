@@ -160,9 +160,9 @@ set pastetoggle=<F2>
     " Toggle between nopaste and paste mode
     " Paste mode prevents indenting
 
-vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+vnoremap <C-c>y "+y
     " Copy to clipboard
-nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
+nnoremap <C-v> "+p
     " Paste from clipboard
 
 
