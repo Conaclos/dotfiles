@@ -27,8 +27,6 @@ colorscheme Tomorrow-Night " Themes in $XDG_CONFIG_HOME'/nvim/colors'
 set background=dark " Adapt colors to a dark background
 set termguicolors " True color
 
-syntax on " Syntax highlighting
-
 
 " UI
 " --
@@ -112,8 +110,6 @@ set infercase " Case-sensitive auto-completion
 " Indentation and whitespace
 " --------------------------
 
-filetype indent plugin on
-
 set copyindent " Copy indetation of the previous line
 set smartindent " Better auto-indentation for C-like syntax
 
@@ -176,13 +172,4 @@ nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 nnoremap / /\v
 vnoremap / /\v
 nnoremap :g/ :g/\v
-
-
-" File type
-" ---------
-
-filetype on
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-autocmd BufNewFile,BufRead *.rs set filetype=rust
-autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript
 
