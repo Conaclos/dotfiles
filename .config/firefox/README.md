@@ -55,6 +55,12 @@ Enable `accessibility.blockautorefresh`
 
 Go to **Privacy** tab of Firefox preferences and set the following options:
 
+**Web Notifications**
+
+Are you annoyed by these websites which spam you about desktop notifiations?
+
+Disable `dom.webnotifications.enabled`
+
 **history**
 
 Firefox will: `Use custom settings for history`
