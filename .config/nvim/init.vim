@@ -165,6 +165,9 @@ vnoremap <C-c>y "+y
 nnoremap <C-v> "+p
     " Paste from clipboard
 
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+    " Clear search highlighting
+
 
 " POSIX regex
 " -----------
