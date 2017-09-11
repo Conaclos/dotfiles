@@ -52,14 +52,14 @@ highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 
 set cursorline " Highlight line where the cursor is
 
-set showcmd " Show partial commands
-
 
 " Line numbering
 " --------------
+" Absolute numbering for current line and relative for others
+" Always use absolute numbering in insert mode
 
-set number " Absolute line numbering
-set relativenumber " Relative line numbering
+set number
+set relativenumber
 
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
