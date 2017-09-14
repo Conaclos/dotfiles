@@ -16,7 +16,11 @@ order += "cpu_usage"
 order += "tztime local"
 
 volume master {
-    format = " %volume"
+    min_width = "🔉 100%"
+    align = "left"
+        # Align speacker char
+    format = "🔉 %volume"
+    format_muted = "🔇"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
@@ -33,21 +37,29 @@ ethernet _first_ {
 }
 
 battery 0 {
-    format = " %percentage %status"
+    integer_battery_capacity = true
+        # No decimals
+    format = "%status %percentage"
+    status_chr = "🗲"
+    status_bat = "🔋"
+    status_unk = "🗲"
+    status_full = "☻"
 }
 
 run_watch DHCP {
     pidfile = "/var/run/dhcpcd*.pid"
     format = "%title"
+    format_down = ""
 }
 
 run_watch VPN {
     pidfile = "/var/run/vpnc/pid"
     format = "%title"
+    format_down = ""
 }
 
 cpu_usage {
-    format = " %usage"
+    format = "💻 %usage"
 }
 
 tztime local {
