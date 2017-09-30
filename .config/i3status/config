@@ -20,14 +20,14 @@ volume master {
     align = "left"
         # Align speacker char
     format = "🔉 %volume"
-    format_muted = "🔇"
+    format_muted = "🔇 %volume"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
 }
 
 wireless _first_ {
-    format_up = "%quality at %essid - %ip"
+    format_up = "%quality %essid - %ip"
     format_down = ""
 }
 
