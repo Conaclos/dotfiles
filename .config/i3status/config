@@ -3,6 +3,9 @@
 
 general {
     colors = true
+    color_good = "#b5bd68" # Green (Tomorrow Night)
+    color_degraded = "#de935f" # Orange (Tomorrow Night)
+    color_bad = "#cc6666" # Red (Tomorrow Night)
     interval = 5
 }
 
