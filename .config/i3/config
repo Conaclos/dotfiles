@@ -164,8 +164,8 @@ bindsym $mod+p exec --no-startup-id passmenu
 workspace $wplay output HDMI1
 
 # Assign clients to their workspaces
-assign [class="thunderbird|gear"] $wmail
-assign [class="mpv|mplayer|Vlc"] $wplay
+assign [class="thunderbird"] $wmail
+assign [class="mpv|Vlc"] $wplay
 
 
 # Bar
