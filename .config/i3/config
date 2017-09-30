@@ -2,7 +2,7 @@
 
 
 # programs
-set $locker "i3lock -c 000000 && sleep 2m"
+set $locker "i3lock -i ~/.local/share/lockpaper/starfleet1.png -t -p win -e -f -c 000000 && sleep 2m"
 set $term "termite"
 
 # worspace "[order]:[name]"
