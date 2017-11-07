@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if test -n "$DISPLAY"; then
-    exec /usr/bin/pinentry-gtk-2 "$@"
-else
+if tty > /dev/null 2>&1; then
     exec /usr/bin/pinentry-tty "$@"
+else
+    exec /usr/bin/pinentry-gtk-2 "$@"
 fi
 
