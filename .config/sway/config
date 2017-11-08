@@ -1,0 +1,217 @@
+# Sway config
+
+
+# programs
+set $term "termite"
+set $menu dmenu_run
+set $passmenu passmenu
+
+# worspace "[order]:[name]"
+set $w1 "1"
+set $w2 "2"
+set $w3 "3"
+set $w4 "4"
+set $w5 "5"
+set $w6 "6"
+set $w7 "7"
+set $w8 "8"
+set $w9 "9"
+set $wmail "10:@"
+set $wplay "11:°"
+
+set $mod Mod4
+    # super key
+
+font pango:Inconsolata 12
+
+
+# output
+# ------
+
+output * bg ~/.local/share/wallpaper/light-wave.jpg fill
+    # default wallpapers: /usr/share/backgrounds/sway
+
+
+# key binding
+# -----------
+
+floating_modifier $mod normal
+    # use Left Mouse+$mod to drag windows to their wanted position
+    # use Right Mouse+$mod to resize windows
+    # 'normal' inverse actions
+
+bindsym $mod+Shift+A kill
+    # kill focused window
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+m focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+M move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split orientation (horizontal, vertical, toggle)
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+t split toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+f fullscreen toggle
+    # fullscreen mode for the focused container
+
+bindsym $mod+Shift+space floating toggle
+    # toggle tiling / floating
+
+bindsym $mod+space focus mode_toggle
+    # change focus between tiling / floating windows
+
+bindsym $mod+q focus parent
+    # focus the parent container
+
+# switch to workspace
+bindsym $mod+ampersand workspace $w1
+bindsym $mod+eacute workspace $w2
+bindsym $mod+quotedbl workspace $w3
+bindsym $mod+apostrophe workspace $w4
+bindsym $mod+parenleft workspace $w5
+bindsym $mod+minus workspace $w6
+bindsym $mod+egrave workspace $w7
+bindsym $mod+underscore workspace $w8
+bindsym $mod+ccedilla workspace $w9
+bindsym $mod+agrave workspace $wmail
+bindsym $mod+parenright workspace $wplay
+bindsym $mod+equal scratchpad show
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $wmail
+bindsym $mod+Shift+degree move container to workspace $wplay
+bindsym $mod+Shift+plus move scratchpad
+
+bindsym $mod+Shift+c reload
+    # reload the configuration file
+bindsym $mod+Shift+r restart
+    # Preserve layout/session, can be used to upgrade
+bindsym $mod+Shift+e exit
+    # Log you out of your X session
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym m resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+
+mode "power" {
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "power"
+
+# app laucnh
+bindsym $mod+Return exec $term
+bindsym $mod+d exec --no-startup-id $menu
+    # program (.desktop) launcher
+bindsym $mod+p exec --no-startup-id $passmenu
+    # pass dmenu
+
+
+# workspace
+# ---------
+
+# large screen workspace
+workspace $wplay output HDMI1
+
+# Assign clients to their workspaces
+assign [class="mpv|Vlc"] $wplay
+
+
+# Bar
+# ---
+
+# start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    mode hide
+    position top
+    status_command i3status
+    strip_workspace_numbers yes
+        # Prefer workspace name to number
+    colors {
+        background #2d2d2d
+        statusline #dedede
+        # order: #border #background #text
+        focused_workspace #f0c674 #f0c674 #0c0c0c
+        active_workspace #de935f #de935f #0c0c0c
+        inactive_workspace #2d2d2d #2d2d2d #c0c0c0
+        urgent_workspace #de935f #de935f #0c0c0c
+    }
+}
+
+
+# UI
+# --
+
+new_window pixel 1
+    # hide the titlebar
+
+# Colors
+client.background #2d2d2d
+
+# Custom window manager behavior
+#for_window [window_role="pop-up"] floating enable
+#for_window [window_role="task_dialog"] floating enable
+
+for_window [class="^Ec$"] floating enable
+for_window [class="^Estudio$"] floating enable
+for_window [class="Pinentry"] floating enable
+for_window [class="^Toplevel$"] floating enable
+
+for_window [class="mpv|mplayer|Vlc"] fullscreen enable
+
