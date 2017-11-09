@@ -35,10 +35,9 @@ output * bg ~/.local/share/wallpaper/light-wave.jpg fill
 # key binding
 # -----------
 
-floating_modifier $mod normal
+floating_modifier $mod
     # use Left Mouse+$mod to drag windows to their wanted position
     # use Right Mouse+$mod to resize windows
-    # 'normal' inverse actions
 
 bindsym $mod+Shift+A kill
     # kill focused window
@@ -169,7 +168,7 @@ bindsym $mod+p exec --no-startup-id $passmenu
 workspace $wplay output HDMI1
 
 # Assign clients to their workspaces
-assign [class="mpv|Vlc"] $wplay
+assign [class="mpv|mplayer|Vlc"] $wplay
 
 
 # Bar
@@ -205,9 +204,6 @@ new_window pixel 1
 client.background #2d2d2d
 
 # Custom window manager behavior
-#for_window [window_role="pop-up"] floating enable
-#for_window [window_role="task_dialog"] floating enable
-
 for_window [class="^Ec$"] floating enable
 for_window [class="^Estudio$"] floating enable
 for_window [class="Pinentry"] floating enable

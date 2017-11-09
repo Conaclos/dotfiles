@@ -4,6 +4,9 @@
 # programs
 set $locker "i3lock -i ~/.local/share/lockpaper/starfleet1.png -t -p win -e -f -c 000000 && sleep 2m"
 set $term "termite"
+set $menu i3-dmenu-desktop
+    # i3-dmenu-desktop is a wrapper around dmenu
+set $passmenu passmenu
 
 # worspace "[order]:[name]"
 set $w1 "1"
@@ -19,7 +22,7 @@ set $wmail "10:@"
 set $wplay "11:°"
 
 set $mod Mod4
-    # Super key
+    # super key
 
 font pango:Inconsolata 12
 
@@ -28,7 +31,7 @@ font pango:Inconsolata 12
 # -----------
 
 floating_modifier $mod
-    # Use Mouse+$mod to drag floating windows to their wanted position
+    # use Right Mouse+$mod to resize windows
 
 bindsym $mod+Shift+A kill
     # kill focused window
@@ -110,9 +113,9 @@ bindsym $mod+Shift+plus move scratchpad
 bindsym $mod+Shift+c reload
     # reload the configuration file
 bindsym $mod+Shift+r restart
-    # restart i3 inplace (preserves layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+e exec "i3-msg exit"
-    # exit i3 (logs you out of your X session)
+    # Preserve layout/session, can be used to upgrade
+bindsym $mod+Shift+e exit
+    # Log you out of your X session
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -149,12 +152,10 @@ bindsym $mod+Pause mode "power"
 bindsym $mod+Return exec $term
 bindsym $mod+x exec $locker
     # screen locker
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id $menu
     # program (.desktop) launcher
-    # i3-dmenu-desktop is a wrapper around dmenu
-bindsym $mod+p exec --no-startup-id passmenu
-    # program (.desktop) launcher
-    # i3-dmenu-desktop is a wrapper around dmenu
+bindsym $mod+p exec --no-startup-id $passmenu
+    # pass dmenu
 
 
 # workspace
@@ -164,8 +165,7 @@ bindsym $mod+p exec --no-startup-id passmenu
 workspace $wplay output HDMI1
 
 # Assign clients to their workspaces
-assign [class="thunderbird"] $wmail
-assign [class="mpv|Vlc"] $wplay
+assign [class="mpv|mplayer|Vlc"] $wplay
 
 
 # Bar
@@ -201,9 +201,6 @@ new_window pixel 1
 client.background #2d2d2d
 
 # Custom window manager behavior
-#for_window [window_role="pop-up"] floating enable
-#for_window [window_role="task_dialog"] floating enable
-
 for_window [class="^Ec$"] floating enable
 for_window [class="^Estudio$"] floating enable
 for_window [class="Pinentry"] floating enable
