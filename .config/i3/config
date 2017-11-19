@@ -197,6 +197,9 @@ bar {
 new_window pixel 1
     # hide the titlebar
 
+hide_edge_borders smart
+    # use borders only if it is not the only container on this workspace
+
 # Colors
 client.background #2d2d2d
 
