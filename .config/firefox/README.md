@@ -51,6 +51,17 @@ Would you like take the control over your browser?
 Enable `accessibility.blockautorefresh`
 
 
+## Isolate cookies by domain
+
+Separate cookies by domain. This prevents advertisers to aggregate data over
+ distinct websites in a single cookie.
+
+Enable `privacy.firstparty.isolate`
+
+Disable `privacy.firstparty.isolate.restrict_opener_access` to relax the policy.
+ This reduces the number of brocken websites.
+
+
 ## Remove session data, except some cookie
 
 Go to **Privacy** tab of Firefox preferences and set the following options:
