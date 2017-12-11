@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Copyright (c) 2017 Victorien Elvinger
+# Licensed under the zlib license (https://opensource.org/licenses/zlib).
+
 if tty > /dev/null 2>&1; then
     exec /usr/bin/pinentry-tty "$@"
 else
