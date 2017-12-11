@@ -8,8 +8,6 @@
      whitespace = red reverse
 [commit]
     gpgsign = true
-[log]
-    showSignature = true
 [push]
     gpgSign = if-asked
 [tag]
