@@ -28,7 +28,7 @@ font pango:Inconsolata 12
 # output
 # ------
 
-output * bg ~/.local/share/wallpaper/light-wave.jpg fill
+output * bg ~/.local/share/wallpaper/w-light-wave.jpg fill
     # default wallpapers: /usr/share/backgrounds/sway
 
 

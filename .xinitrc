@@ -18,7 +18,7 @@ numlockx &
     # numeric lock
 
 feh --no-fehbg --recursive --randomize --bg-scale \
-    "${XDG_DATA_HOME:-$HOME/.local/share}"/wallpaper/*
+    "${XDG_DATA_HOME:-$HOME/.local/share}"/wallpaper/w-*
     # background settings
 
 exec "${1:-i3}"
