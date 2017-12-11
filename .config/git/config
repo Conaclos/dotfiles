@@ -2,9 +2,9 @@
     email =
     name = Victorien Elvinger
     signingkey =
-[[apply]
+[apply]
     whitespace = fix
-[[color "diff"]
+[color "diff"]
      whitespace = red reverse
 [commit]
     gpgsign = true
