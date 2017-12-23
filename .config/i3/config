@@ -4,9 +4,8 @@
 # programs
 set $locker "i3lock -i ~/.local/share/lockpaper/starfleet1.png -t -p win -e -f -c 000000 && sleep 2m"
 set $term "termite"
-set $menu i3-dmenu-desktop
-    # i3-dmenu-desktop is a wrapper around dmenu
-set $passmenu passmenu
+set $menu "i3-dmenu-desktop --dmenu='dmenu -i -nb \#2d2d2d -sb \#f0c674 -sf \#0c0c0c'"
+set $passmenu "passmenu -i -nb '#2d2d2d' -sb '#f0c674' -sf '#0c0c0c'"
 
 # worspace "[order]:[name]"
 set $w1 "1"
