@@ -238,12 +238,3 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.rs set filetype=rust
 autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript
 
-
-" Extra settings
-" --------------
-
-if filereadable($HOME.'/.vimrc.local')
-    source $HOME/.vimrc.local
-endif
-
-
