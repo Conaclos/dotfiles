@@ -3,8 +3,8 @@
 
 # programs
 set $term "termite"
-set $menu "j4-dmenu-desktop --dmenu='dmenu -i -nb \#2d2d2d -sb \#f0c674 -sf \#0c0c0c'"
-set $passmenu "passmenu -i -nb '#2d2d2d' -sb '#f0c674' -sf '#0c0c0c'"
+set $menu "j4-dmenu-desktop --dmenu='dmenu -i -fn Incosolata:pixelsize=18 -nb \#2d2d2d -sb \#f0c674 -sf \#0c0c0c'"
+set $passmenu "passmenu -i -fn Incosolata:pixelsize=18 -nb '#2d2d2d' -sb '#f0c674' -sf '#0c0c0c'"
 
 # worspace "[order]:[name]"
 set $w1 "1"
