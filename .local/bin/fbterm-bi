@@ -1,13 +1,21 @@
-#!/bin/bash
+#!/bin/sh
+
+# see man page of fbterm for the original script
 
 # fbterm-bi: a wrapper script to enable background image with fbterm
 # usage: fbterm-bi /path/to/image fbterm-options
 
 echo -ne "\e[?25l" # hide cursor
+
 fbv -ciuker "$1" << EOF
 q
 EOF
+
 shift
 export FBTERM_BACKGROUND_IMAGE=1
-exec /bin/fbterm "$@"
+if test -z "$1"; then
+    exec /bin/fbterm
+else
+    exec /bin/fbterm -- env 'TERM=fbterm' "$@"
+fi
 
