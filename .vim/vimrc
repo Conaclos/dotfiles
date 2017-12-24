@@ -12,6 +12,8 @@ set history=100 " Command history length (Default: 50)
 
 set textwidth=80 " Ideal maximum width of a line
 
+set formatoptions-=t " No automatic insertion of newline
+
 
 " XDG compliant
 " -------------
