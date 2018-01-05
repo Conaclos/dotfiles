@@ -1,5 +1,7 @@
 
-.fish.sh contains stuff executable in bash, zsh, and fish
+# Filename convention
 
-.sh contains stuff executable in bash, and zsh
+.fish.sh may be executed in POSIX-compatible shells and in fish
+
+.sh may be executed in POSIX-compatible shells
 
