@@ -1,4 +1,3 @@
-#!/bin/sh
 
 alias man='env LESS_TERMCAP_md="$(tput bold; tput setaf 1)"\
     LESS_TERMCAP_me="$(tput sgr0)"\

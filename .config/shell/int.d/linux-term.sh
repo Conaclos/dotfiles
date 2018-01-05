@@ -1,4 +1,3 @@
-#!/bin/sh
 
 if test "$TERM" = 'linux'; then
 

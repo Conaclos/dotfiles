@@ -1,4 +1,3 @@
-#!/bin/sh
 
 if test -z "$XDG_RUNTIME_DIR"; then
     HISTFILE='/dev/null'
