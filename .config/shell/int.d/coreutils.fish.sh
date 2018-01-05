@@ -1,4 +1,7 @@
 
+# Aliases with a starting space are not stored in the shell history if
+# HIST_IGNORE_SPACE is enabled.
+
 alias cd=' cd'
 
 alias dd='dd status=progress'
@@ -8,6 +11,5 @@ alias lh=' command ls -Alhv --color=always --time-style=long-iso --group-directo
     # Human friendly ls
     # -v: natural sort of number
 
-alias mv='mv -i'
-    # Ask before to erase an existing target
+alias mv='mv -i' # Ask before to erase an existing target
 
