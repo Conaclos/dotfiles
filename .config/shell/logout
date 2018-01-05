@@ -2,7 +2,6 @@
 
 # Must be sourced on exit of a login shell.
 
-if test -z "$DISPLAY"; then
-    reset # Reset console for privacy
-fi
+tty > /dev/null 2>&1 &&
+    tput reset # Reset console for privacy
 

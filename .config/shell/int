@@ -3,7 +3,7 @@
 # Must be sourced in interactive shell, after $XDG_CONFIG_HOME/shell/env
 # May contain commands to set up aliases, functions, etc.
 
-l_int_d="${XDG_CONFIG_HOME:-$HOME/.config}/shell/int.d"
+l_int_d="${XDG_CONFIG_HOME:-"$HOME/.config"}/shell/int.d"
 if test -d "$l_int_d"; then
     for l_int in "$l_int_d"/*.sh; do
         ! test -r "$l_int" || . "$l_int"
