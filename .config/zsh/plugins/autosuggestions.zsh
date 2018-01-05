@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # Should be sourced after zle and compinit
 
 

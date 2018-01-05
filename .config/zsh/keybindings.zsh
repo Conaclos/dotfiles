@@ -1,5 +1,3 @@
-#!/usr/bin/zsh
-
 # Should only contain widgets and zle key-bindings
 # Use <Ctrl><v> in your terminal to know the hardcoded key
 # Prefer use "standard" keys if possible

@@ -1,5 +1,3 @@
-#!/usr/bin/zsh
-
 # Sourced in interactive shells.
 # May contain commands to set up aliases, functions, options, key bindings, etc.
 
@@ -8,13 +6,15 @@
 zmodload -a zsh/stat zstat
 zmodload -a zsh/zpty zpty
 
-. "$ZDOTDIR/options.zshrc" # Zsh options
-. "$ZDOTDIR/prompt.zshrc" # Zsh prompt
-. "$ZDOTDIR/keybindings.zshrc" # Zle key bindings
-. "$ZDOTDIR/comp.zshrc" # Completion enhancements
+. "$ZDOTDIR/options.zsh" # Zsh options
+. "$ZDOTDIR/prompt.zsh" # Zsh prompt
+. "$ZDOTDIR/keybindings.zsh" # Zle key bindings
+. "$ZDOTDIR/comp.zsh" # Completion enhancements
 
-. "$ZDOTDIR/autosuggestions.zshrc"
-. "$ZDOTDIR/highlighting.zshrc"
+for l_plugin in "$ZDOTDIR/plugins"/*.zsh; do
+    . "$l_plugin"
+done
+unset l_plugin
 
-. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/int"
+. "${XDG_CONFIG_HOME:-"$HOME/.config"}/shell/int"
 

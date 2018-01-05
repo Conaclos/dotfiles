@@ -1,14 +1,10 @@
-#!/bin/zsh
 
 {
-    zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump"
-    if test -s "$zcompdump" &&
-        (! test -s "$zcompdump.zwc" ||
-            test "$zcompdump" -nt "$zcompdump.zwc"); then
+    zcompdump="${XDG_CACHE_HOME:-"$HOME/.cache"}/zsh/compdump"
+    test -s "$zcompdump" &&
+        { test -s "$zcompdump.zwc" || test "$zcompdump" -nt "$zcompdump.zwc"; } &&
+            zcompile "$zcompdump"
+} &! # Run in background and disown
 
-        zcompile "$zcompdump"
-    fi
-} &! # Run in background
-
-. "${XDG_CONFIG_HOME:-$HOME/.config}/shell/login"
+. "${XDG_CONFIG_HOME:-"$HOME/.config"}/shell/login"
 

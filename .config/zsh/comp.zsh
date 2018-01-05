@@ -1,5 +1,3 @@
-#!/usr/bin/zsh
-
 # Should only contain completion and correction stuff
 # Use 'zstyle' for getting current settings
 

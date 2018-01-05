@@ -1,10 +1,5 @@
-#!/sur/bin/zsh
-
 # Should only contain prompt settings
 
-prompt_delimiter() {
-    (sudo -n true 2> /dev/null && echo '▸') || echo '>'
-}
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
@@ -24,7 +19,7 @@ PROMPT=$PROMPT'${vcs_info_msg_0_}'
     # repository infos
 PROMPT=$PROMPT'%(?.. %F{red}[%?])%f'
     # status $?
-PROMPT=$PROMPT' $(prompt_delimiter) '
+PROMPT=$PROMPT' > '
     # prompt delimiter
 
 # Right prompt

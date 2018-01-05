@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # Should be sourced after zle and compinit
 
 
@@ -8,4 +6,18 @@ if
 then
     . '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 fi
+
+
+# General
+# -------
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+    # main: default
+    # brackets: Match bracket and parenthesis
+
+
+# Path
+# ----
+
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=246,'
 

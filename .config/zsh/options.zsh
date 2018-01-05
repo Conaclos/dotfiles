@@ -1,5 +1,3 @@
-#!/usr/bin/zsh
-
 # Should only contain Zsh options
 # Options are case-insensitive
 
