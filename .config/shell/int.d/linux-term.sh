@@ -1,7 +1,7 @@
 
 if test "$TERM" = 'linux'; then
 
-    alias fbterm="$HOME"'/.local/bin/fbterm-bi "${XDG_DATA_HOME:-$HOME/.local/share}"/wallpaper/w-light-wave.jpg'
+    alias fbterm='"$HOME"/.local/bin/fbterm-bi "${XDG_DATA_HOME:-"$HOME"/.local/share}"/wallpaper/w-light-wave.jpg'
 
     # 256-colors support throught fbterm
     alias mutt='command fbterm env TERM=fbterm mutt'
