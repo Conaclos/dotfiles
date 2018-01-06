@@ -4,6 +4,7 @@
 # Should not change the shell env
 
 command -v 'fortune' > /dev/null && command -v 'cowsay' > /dev/null &&
-    fortune "${XDG_DATA_HOME:-"$HOME/.local/share"}/fortune" | cowsay -f 'tux'
+    fortune "${XDG_DATA_HOME:-"$HOME/.local/share"}/fortune" |
+        cowsay -f 'tux' -n
     # Personal fortunes
 
