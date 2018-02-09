@@ -62,15 +62,41 @@ Disable `privacy.firstparty.isolate.restrict_opener_access` to relax the policy.
  This reduces the number of brocken websites.
 
 
-## Remove session data, except some cookie
+## Referer policy
 
-Go to **Privacy** tab of Firefox preferences and set the following options:
+To send only the origin
 
-**Web Notifications**
+Instead of sending the entire URI, you can remove the query string.
+Thus, the referer includes only the scheme, the host, the port, and the path.
+
+Set `network.http.referer.trimmingPolicy` to `1`
+
+The following settings enables to strip the path component when the origin is
+different:
+
+Set `network.http.referer.XOriginTrimmingPolicy` to `2`
+
+
+## Web Notifications
 
 Are you annoyed by these websites which spam you about desktop notifiations?
 
 Disable `dom.webnotifications.enabled`
+
+
+## Windows without URL bar
+
+Enable `dom.disable_window_open_feature.location`.
+
+This enables to open windows without the URL bar.
+For example you can add this kind of bookmark to open a webapp:
+
+`javascript:{window.open("webapp-url","_blank","menubar=no,location=no,toolbar=no,scrollbars=yes,left=150,top=50)}`
+
+
+## Remove session data, except some cookie
+
+Go to **Privacy** tab of Firefox preferences and set the following options:
 
 **history**
 
