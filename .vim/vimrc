@@ -155,6 +155,19 @@ set complete+=kspell " Spell auto-completion when spell is enabled
 set infercase " Case-sensitive auto-completion
 set wildmenu " Command-line <Tab> completion
 
+function! Insert_tab_completion()
+    " Do completion when possible. Else, indent.
+
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+
+inoremap <expr> <tab> Insert_tab_completion()
+
 
 " Indentation and whitespace
 " --------------------------
