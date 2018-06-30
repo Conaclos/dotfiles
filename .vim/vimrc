@@ -238,6 +238,8 @@ vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call
 nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
     " Paste from clipboard
 
+cnoremap <expr> %% expand('%:h').'/' " %% shortcut to insert file's dir
+
 
 " POSIX regex
 " -----------
