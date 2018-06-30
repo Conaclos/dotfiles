@@ -155,7 +155,7 @@ set wildmenu " Command-line <Tab> completion
 " Indentation and whitespace
 " --------------------------
 
-filetype indent plugin on
+filetype plugin indent on
 
 set autoindent
     " When opening a new line and no file-type-specific indenting is enabled,
