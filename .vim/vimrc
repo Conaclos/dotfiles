@@ -122,7 +122,7 @@ set statusline+=%-4.P " Percentage through file
 
 function! Indentation_practice()
     if &expandtab == 1
-        return "Sp".&shiftwidth
+        return "Sp".&tabstop
     else
         return "Tab"
     endif
@@ -181,13 +181,18 @@ set copyindent " Copy indetation of the previous line
 set smartindent " Better auto-indentation for C-like syntax
 
 set shiftround " Absorb space when tab is used
-set shiftwidth=4 " Number of inserted columns by the indent operation
-set softtabstop=4 " Number of inserted columns when <Tab> is hit for indenting
 set tabstop=4 " Number of columns for a Tab
+set shiftwidth=0
+    " Number of inserted columns by the indent operation
+    " 0 backup to the value of tabstop
+set softtabstop=-1
+    " Number of inserted columns when <Tab> is hit for indenting
+    " -1 backup to the value of shiftwidth
 
 
 set list listchars=tab:» ,trail:•,nbsp:·
     " Show tabs, trailing and non-breaking spaces
+    " Be careful, the space after "»" is a non-breaking space.
 
 highlight SpecialKey term=bold ctermfg=red guifg=red
     " Color for "nbsp", "space", "tab", and "trail" from "listchars"
@@ -203,15 +208,12 @@ function! Infer_indentation_practice()
 
     if match(header,"^\t", 0, 1) != -1
         " Use tabs for indenting
-
         set noexpandtab
         set smarttab " Use tabs for indentation and spaces for alignment
 
     elseif match(header,"^[ ][ ][^ ]", 0, 1) != -1
         " Use 2 spaces for indenting
-
-        set shiftwidth=2
-        set softtabstop=2
+        set tabstop=2
     else
         " Use 4 spaces for indenting
     endif
