@@ -33,7 +33,7 @@ set runtimepath+=$VIM_DATA_HOME " Add $VIM_DATA_HOME as runtime directory
 " ------
 
 if isdirectory($VIM_DATA_HOME.'/backup')
-    set backupdir=$VIM_DATA_HOME/backup// " // prevents name collision
+    set backupdir=$VIM_DATA_HOME/backup/
 
     set backupskip+=/tmp/*,*/shm/*,*/playroom/*,*.swp,*.bak
 else
@@ -52,7 +52,7 @@ endif
 if has('persistent_undo') && isdirectory($VIM_DATA_HOME.'/undo')
     " Persistent undo
 
-    set undodir=$VIM_DATA_HOME/undo// " // prevents name collision
+    set undodir=$VIM_DATA_HOME/undo/
     set undofile " Enable persistent undo files
     set undolevels=200 " Maximum number of undoing changes
     set undoreload=8000 " Maximum number of lines to save for undo
