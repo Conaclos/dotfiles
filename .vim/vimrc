@@ -37,7 +37,6 @@ if isdirectory($VIM_DATA_HOME.'/backup')
 
     set backupskip+=/tmp/*,*/shm/*,*/playroom/*,*.swp,*.bak
 else
-    set nobackup
     set nowritebackup " Enable saving without backup
 endif
 
