@@ -175,7 +175,7 @@ set softtabstop=-1
 
 set list listchars=tab:» ,trail:•,nbsp:·
     " Show tabs, trailing and non-breaking spaces
-    " Be careful, the space after "»" is a non-breaking space.
+    " Be careful, the space after "»" is a non-breaking space
 
 highlight SpecialKey term=bold ctermfg=red guifg=red
     " Color for "nbsp", "space", "tab", and "trail" from "listchars"
@@ -186,14 +186,11 @@ set expandtab
 function! Infer_indentation_practice()
     " Infer indentation practice (tabs or 2/4 spaces)
     " based on first 800 lines
-
     let header=getline(1,800)
-
     if match(header,"^\t", 0, 1) != -1
         " Use tabs for indenting
         set noexpandtab
         set smarttab " Use tabs for indentation and spaces for alignment
-
     elseif match(header,"^[ ][ ][^ ]", 0, 1) != -1
         " Use 2 spaces for indenting
         set tabstop=2
@@ -209,7 +206,7 @@ autocmd BufReadPost * call Infer_indentation_practice()
 " key mapping
 " -----------
 nnoremap Y y$
-    " default: "Y" acts as "yy"
+    " default: "Y" acts as "y$"
     " Same behavior as D and C
 
 set pastetoggle=<F2>
