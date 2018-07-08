@@ -3,10 +3,6 @@
 " Licensed under the zlib license (https://opensource.org/licenses/zlib).
 "
 
-set nocompatible
-    " Don't care about retro-compatibility of Vi settings
-    " Must be first since it has a side-effect on the settings
-
 set history=100 " Command history length (Default: 50)
 
 set textwidth=80 " Ideal maximum width of a line
