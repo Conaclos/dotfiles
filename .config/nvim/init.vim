@@ -3,7 +3,6 @@
 " Licensed under the zlib license (https://opensource.org/licenses/zlib).
 "
 
-
 set history=100 " Command history length (Default: 10_000)
 
 set textwidth=80 " Ideal maximum width of a line
@@ -11,10 +10,8 @@ set textwidth=80 " Ideal maximum width of a line
 
 " Backup
 " ------
-
 set backupskip+=/tmp/*,*/shm/*,*/playroom/*,*.swp,*.bak
 
-" Persistent undo
 set undofile " Enable persistent undo files
 set undolevels=200 " Maximum number of undoing changes
 set undoreload=8000 " Maximum number of lines to save for undo
@@ -22,7 +19,6 @@ set undoreload=8000 " Maximum number of lines to save for undo
 
 " Colors
 " ------
-
 colorscheme Tomorrow-Night " Themes in $XDG_CONFIG_HOME'/nvim/colors'
 set background=dark " Adapt colors to a dark background
 set termguicolors " True color
@@ -30,7 +26,6 @@ set termguicolors " True color
 
 " UI
 " --
-
 set lazyredraw " Redraw only when needed
 
 set scrolloff=10 " Minimal number of lines to keep above and below the cursor
@@ -64,7 +59,6 @@ autocmd InsertLeave * :set relativenumber
 
 " Status-line
 " -----------
-
 set statusline=%f " Relative path to the file
 set statusline+=%= " Switch to the right side
 set statusline+=%-12.{Paste_mode()}
@@ -92,7 +86,6 @@ endfunction
 
 " Searching
 " ---------
-
 set ignorecase " Case-insensitive search
 set smartcase " Use case-sensitive search when a capital is present
 
@@ -106,7 +99,6 @@ set infercase " Case-sensitive auto-completion
 
 function! Insert_tab_completion()
     " Try completion when possible. Else, indent.
-
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<tab>"
@@ -120,7 +112,6 @@ inoremap <expr> <tab> Insert_tab_completion()
 
 " Indentation and whitespace
 " --------------------------
-
 set copyindent " Copy indetation of the previous line
 set smartindent " Better auto-indentation for C-like syntax
 
@@ -165,7 +156,6 @@ autocmd BufReadPost * call Infer_indentation_practice()
 
 " key mapping
 " -----------
-
 nnoremap Y y$
     " default: "Y" acts as "y$"
     " Same behavior as D and C
@@ -185,7 +175,6 @@ nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 " POSIX regex
 " -----------
-
 nnoremap / /\v
 vnoremap / /\v
 nnoremap :g/ :g/\v
