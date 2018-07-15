@@ -39,6 +39,24 @@ If you don't use Firefox sync service, you can disbale UI-related elemnts.
 Disable `identity.fxaccounts.enabled`
 
 
+### Disable permission requests
+
+Are you annoyed about these websites asking for your location, your micro?
+I am...
+
+Disable location request: set `permissions.default.geo` to `2`
+
+Disable camera request: set `permissions.default.camera` to `2`
+
+Disable microphone request: set `permissions.default.microphone` to `2`
+
+Disable desktop notification request: set `permissions.default.desktop-notification` to `2`
+
+These options can also be set in Firefox preferences.
+Go to **Privacy** -> **Permissions**.
+You can also add exceptions.
+
+
 ### Mitigate this damn Ctrl-q
 
 Another yet annoying thing is to accidentatlly press Ctrl-q. Firefox
@@ -66,13 +84,6 @@ Let's disable `middlemouse.contentLoadURL`
 Would you like take the control over your browser?
 
 Enable `accessibility.blockautorefresh`
-
-
-### Web Notifications
-
-Are you annoyed by these websites which spam you about desktop notifiations?
-
-Disable `dom.webnotifications.enabled`
 
 
 ### Windows without URL bar
