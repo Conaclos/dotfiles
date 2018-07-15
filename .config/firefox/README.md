@@ -6,7 +6,9 @@ This is a reminder of my personal Firefox configurations.
 To set any setting go to `about:config`.
 
 
-## Exclusively use memory
+## Performance
+
+### Exclusively use memory
 
 Have you a few extra Gigabytes in memory?
 
@@ -14,7 +16,9 @@ Disable `browser.cache.disk.enable` and create an `integer` fieled named
  `browser.cache.memory.capacity` set to `-1`. `-1` means unlimited.
 
 
-## Disable header hiding on fullscreen
+## Ergonomics
+
+### Disable header hiding on fullscreen
 
 If you use a tiling winfows mananger such as [i3](https://i3wm.org), you can be 
  annoyed by the automatic hiding of the header when you turn on fullscreen mode.
@@ -22,7 +26,15 @@ If you use a tiling winfows mananger such as [i3](https://i3wm.org), you can be
 Disable `browser.fullscreen.autohide`
 
 
-## Mitigate this damn Ctrl-q
+### Disable Poccket
+
+If you don't use Pocket, you can disbale the extension.
+This also removes the save-to-pocket entry from the contextual menu.
+
+Disable `extensions.pocket.enabled`
+
+
+### Mitigate this damn Ctrl-q
 
 Another yet annoying thing is to accidentatlly press Ctrl-q. Firefox
  immediately shutdowns, regardless the number of opened tabs,
@@ -34,7 +46,7 @@ The best solution (without extensions) I found is to set a setting to warn the
 Enable `browser.showQuitWarning`
 
 
-## Disable Go back on pressing of middle mouse
+### Disable Go back on pressing of middle mouse
 
 Did you already notice that pressing your middle mouse, out of an hyperlink,
  loads a previous page?
@@ -44,14 +56,34 @@ I have encontred this behavior too many times...
 Let's disable `middlemouse.contentLoadURL`
 
 
-## Prompt for auto refresh
+### Prompt for auto refresh
 
 Would you like take the control over your browser?
 
 Enable `accessibility.blockautorefresh`
 
 
-## Isolate cookies by domain
+### Web Notifications
+
+Are you annoyed by these websites which spam you about desktop notifiations?
+
+Disable `dom.webnotifications.enabled`
+
+
+### Windows without URL bar
+
+Enable `dom.disable_window_open_feature.location`.
+
+This enables to open windows without the URL bar.
+For example you can add this kind of bookmark to open a webapp:
+
+`javascript:{window.open("webapp-url","_blank","menubar=no,location=no,toolbar=no,scrollbars=yes,left=150,top=50)}`
+
+
+
+## Privacy and security
+
+### Isolate cookies by domain
 
 Separate cookies by domain. This prevents advertisers to aggregate data over
  distinct websites in a single cookie.
@@ -62,9 +94,7 @@ Disable `privacy.firstparty.isolate.restrict_opener_access` to relax the policy.
  This reduces the number of brocken websites.
 
 
-## Referer policy
-
-To send only the origin
+### Referer policy
 
 Instead of sending the entire URI, you can remove the query string.
 Thus, the referer includes only the scheme, the host, the port, and the path.
@@ -77,24 +107,22 @@ different:
 Set `network.http.referer.XOriginTrimmingPolicy` to `2`
 
 
-## Web Notifications
+### Fingerprint mitigation
 
-Are you annoyed by these websites which spam you about desktop notifiations?
+Enable `privacy.resistFingerprinting`
 
-Disable `dom.webnotifications.enabled`
-
-
-## Windows without URL bar
-
-Enable `dom.disable_window_open_feature.location`.
-
-This enables to open windows without the URL bar.
-For example you can add this kind of bookmark to open a webapp:
-
-`javascript:{window.open("webapp-url","_blank","menubar=no,location=no,toolbar=no,scrollbars=yes,left=150,top=50)}`
+Note that this fakes the exposed browser version. This may prevent the
+ installation of extensions.
 
 
-## Remove session data, except some cookie
+### Firefox Sync
+
+To hide Firefox Sync:
+
+Disable `identity.fxaccounts.enabled`
+
+
+### Remove session data, except some cookie
 
 Go to **Privacy** tab of Firefox preferences and set the following options:
 
