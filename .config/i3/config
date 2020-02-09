@@ -145,7 +145,7 @@ mode "power" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Pause mode "power"
+bindsym Pause mode "power"
 
 # app laucnh
 bindsym $mod+Return exec $term
