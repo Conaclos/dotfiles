@@ -47,23 +47,24 @@ bindkey '^Z' defer-cmd-or-bg
 sudo-toggle() {
     # Prepend command with sudo or sudoedit
     # or remove it if already there
+    local leditor="${SUDO_EDITOR:-"${VISUAL:-"${EDITOR:-vi}"}"}"
     case "$BUFFER" in
         sudoedit*)
-            LBUFFER=${LBUFFER#'sudoedit'}
-            BUFFER=${BUFFER#'sudoedit'}
-            LBUFFER=$VISUAL$LBUFFER
+            LBUFFER="${LBUFFER#sudoedit}"
+            BUFFER="${BUFFER#sudoedit}"
+            LBUFFER="$leditor$LBUFFER"
             ;;
         sudo*)
-            LBUFFER=${LBUFFER#'sudo '}
-            BUFFER=${BUFFER#'sudo '}
+            LBUFFER="${LBUFFER#sudo }"
+            BUFFER="${BUFFER#sudo }"
             ;;
-        "$VISUAL"*)
-            LBUFFER=${LBUFFER#$VISUAL}
-            BUFFER=${BUFFER#$VISUAL}
-            LBUFFER='sudoedit'$LBUFFER
+        "$leditor"*)
+            LBUFFER="${LBUFFER#"$leditor"}"
+            BUFFER="${BUFFER#"$leditor"}"
+            LBUFFER="sudoedit$LBUFFER"
             ;;
         *)
-            LBUFFER='sudo '$LBUFFER
+            LBUFFER="sudo $LBUFFER"
             ;;
     esac
 }
@@ -77,8 +78,7 @@ bindkey '^@' sudo-toggle
 
 cmd-menu() {
     # Open the menu then print the selected command.
-    BUFFER=''
-    LBUFFER=$(fzf < ${XDG_DATA_HOME:-$HOME'/.local/share'}'/shell/command_book')
+    LBUFFER="$LBUFFER$(fzf < "${XDG_DATA_HOME:-"$HOME/.local/share"}/shell/command_book")"
 }
 zle -N cmd-menu
 bindkey '²' cmd-menu
