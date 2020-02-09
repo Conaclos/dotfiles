@@ -12,4 +12,5 @@ alias lh=' command ls -Alhv --color=always --time-style=long-iso --group-directo
     # -v: natural sort of number
 
 alias mv='mv -i' # Ask before to erase an existing target
+alias cp='cp -i' # Ask before to erase an existing target
 
