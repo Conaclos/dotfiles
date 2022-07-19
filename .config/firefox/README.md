@@ -131,13 +131,6 @@ Note that this fakes the exposed browser version. This may prevent the
  installation of extensions.
 
 
-### Firefox Sync
-
-To hide Firefox Sync:
-
-Disable `identity.fxaccounts.enabled`
-
-
 ### Remove session data, except some cookie
 
 Go to **Privacy** tab of Firefox preferences and set the following options:
