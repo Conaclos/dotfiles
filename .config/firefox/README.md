@@ -123,6 +123,19 @@ different:
 Set `network.http.referer.XOriginTrimmingPolicy` to `2`
 
 
+### Strip tracking URLs' parameters
+
+Some sites add tracking parameters to links to track users across sites.
+
+The following settings enables to strip these paramters.
+Navigational events across the same site are not processed.
+
+Enable `privacy.query_stripping.enabled`
+
+Note that Tracking Protection must be set to `Strict` in order to
+use this feature.
+
+
 ### Fingerprint mitigation
 
 Enable `privacy.resistFingerprinting`
