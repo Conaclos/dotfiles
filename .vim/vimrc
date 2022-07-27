@@ -1,233 +1,223 @@
-"
-" Copyright (c) 2015-2018 Victorien Elvinger
-" Licensed under the zlib license (https://opensource.org/licenses/zlib).
-"
+vim9script
 
-set history=100 " Command history length (Default: 50)
-
-set textwidth=80 " Ideal maximum width of a line
-
-set formatoptions-=t " No automatic insertion of newline
-
-set autoread " Automatically reload if file was changed outside
+# Copyright (c) 2015 Victorien Elvinger
+# Licensed under the zlib license (https://opensource.org/licenses/zlib).
 
 
-" XDG compliant
-" -------------
+set nocompatible
+    # Don't care about retro-compatibility of Vi settings
+    # Must be first since it has a side-effect on the settings
+
+set history=100 # Command history length (Default: 50)
+
+set textwidth=80 # Ideal maximum width of a line
+
+set formatoptions-=t # No automatic insertion of newline
+
+set autoread # Automatically reload if file was changed outside
+
+
+# XDG compliant
+# -------------
 if empty($XDG_DATA_HOME)
-    let $VIM_DATA_HOME=$HOME.'/.local/share/vim'
+    $VIM_DATA_HOME = $HOME .. '/.local/share/vim'
 else
-    let $VIM_DATA_HOME=$XDG_DATA_HOME.'/vim'
+    $VIM_DATA_HOME = $XDG_DATA_HOME .. '/vim'
 endif
 
-set runtimepath+=$VIM_DATA_HOME " Add $VIM_DATA_HOME as runtime directory
+set runtimepath+=$VIM_DATA_HOME # Add $VIM_DATA_HOME as runtime directory
 
 
-" Backup
-" ------
-if isdirectory($VIM_DATA_HOME.'/backup')
+# Backup
+# ------
+if isdirectory($VIM_DATA_HOME .. '/backup')
     set backupdir=$VIM_DATA_HOME/backup/
     set backupskip+=/tmp/*,*/shm/*,*/playroom/*,*.swp,*.bak
 else
-    set nowritebackup " Save without backup
+    set nowritebackup # Save without backup
 endif
 
-if isdirectory($VIM_DATA_HOME.'/swap')
-    set directory=$VIM_DATA_HOME/swap// " // prevents name collision
+if isdirectory($VIM_DATA_HOME .. '/swap')
+    set directory=$VIM_DATA_HOME/swap// # // prevents name collision
 else
     set noswapfile
 endif
 
-if has('persistent_undo') && isdirectory($VIM_DATA_HOME.'/undo')
-    " Persistent undo
+if has('persistent_undo') && isdirectory($VIM_DATA_HOME .. '/undo')
+    # Persistent undo
     set undodir=$VIM_DATA_HOME/undo/
-    set undofile " Enable persistent undo files
-    set undolevels=200 " Maximum number of undoing changes
-    set undoreload=8000 " Maximum number of lines to save for undo
+    set undofile # Enable persistent undo files
+    set undolevels=200 # Maximum number of undoing changes
+    set undoreload=8000 # Maximum number of lines to save for undo
 endif
 
 set viminfo=
-    " Skip other histories
+    # Skip other histories
 
 
-" Colors
-" ------
+# Colors
+# ------
 colorscheme Tomorrow-Night
-set background=dark " Adapt colors to a dark background
+set background=dark # Adapt colors to a dark background
 
-syntax on " Syntax highlighting
+syntax on # Syntax highlighting
 
 
-" UI
-" --
-set lazyredraw " Redraw only when needed
+# UI
+# --
+set lazyredraw # Redraw only when needed
 
-set scrolloff=10 " Minimal number of lines to keep above and below the cursor
-set sidescrolloff=10 " Minimal number of columns to keep horizontally
+set scrolloff=10 # Minimal number of lines to keep above and below the cursor
+set sidescrolloff=10 # Minimal number of columns to keep horizontally
 
-set nostartofline " Leave the cursor where it was for a bunch of commands
+set nostartofline # Leave the cursor where it was for a bunch of commands
 
-set matchtime=2 " How many tenths of a second to blink when matching brackets
+set matchtime=2 # How many tenths of a second to blink when matching brackets
 
-set nowrap " No line wrapping
+set nowrap # No line wrapping
 
-set iskeyword=_,#,$,@,% " Are not word separators
+set iskeyword=_,#,$,@,% # Are not word separators
 
-set colorcolumn=+1 " Highlighting column "textwidth"+1
+set colorcolumn=+1 # Highlighting column textwidth+1
 highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 
-set cursorline " Highlight line where the cursor is
+set cursorline # Highlight line where the cursor is
 
-set showcmd " Show partial commands
+set showcmd # Show partial commands
 
 
-" Line numbering
-" --------------
-set number " Absolute line numbering
-set relativenumber " Relative line numbering
+# Line numbering
+# --------------
+set number # Absolute line numbering
+set relativenumber # Relative line numbering
 
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
 
-" Status-line
-" -----------
-set laststatus=2 " Display the status line always
+# Status-line
+# -----------
+set laststatus=2 # Display the status line always
 
-set statusline=%f " Relative path to the file
-set statusline+=%= " Switch to the right side
-set statusline+=%-12.{Paste_mode()}
-set statusline+=%-10.y " File type as recognized
-set statusline+=%-8.{Indentation_practice()} " Indentation practice
-set statusline+=%-6.(%c%V%) " Current Column
-set statusline+=%-4.P " Percentage through file
+set statusline=%f # Relative path to the file
+set statusline+=%= # Switch to the right side
+set statusline+=%-12.{g:Paste_mode()}
+set statusline+=%-10.y # File type as recognized
+set statusline+=%-8.{g:Indentation_practice()} # Indentation practice
+set statusline+=%-6.(%c%V%) # Current Column
+set statusline+=%-4.P # Percentage through file
 
-function! Indentation_practice()
-    if &expandtab == 1
-        return "Sp".&tabstop
-    else
-        return "Tab"
-    endif
-endfunction
+def g:Indentation_practice(): string
+    return &expandtab ? "Sp" .. &tabstop : "Tab"
+enddef
 
-function! Paste_mode()
-    if &paste == 1
-        return "Paste"
-    else
-        return ""
-    endif
-endfunction
+def g:Paste_mode(): string
+    return &paste ? "Paste" : ""
+enddef
 
 
-" Searching
-" ---------
-set hlsearch " Highlight all matches for the pattern
-set incsearch " Show the first match for the pattern, while typing
+# Searching
+# ---------
+set hlsearch # Highlight all matches for the pattern
+set incsearch # Show the first match for the pattern, while typing
 
-set ignorecase " Case-insensitive search
-set smartcase " Use case-sensitive search when a capital is present
+set ignorecase # Case-insensitive search
+set smartcase # Use case-sensitive search when a capital is present
 
 
-" Auto-completion
-" ---------------
-set complete+=kspell " Spell auto-completion when spell is enabled
-set infercase " Case-sensitive auto-completion
-set wildmenu " Command-line <Tab> completion
+# Auto-completion
+# ---------------
+set complete+=kspell # Spell auto-completion when spell is enabled
+set infercase # Case-sensitive auto-completion
+set wildmenu # Command-line <Tab> completion
 
-function! Insert_tab_completion()
-    " Try completion when possible. Else, indent.
-
-    let col = col('.') - 1
+def Insert_tab_completion(): string
+    # Try completion when possible. Else, indent.
+    const col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<tab>"
-    else
-        return "\<c-p>"
     endif
-endfunction
+    return "\<c-p>"
+enddef
 
 inoremap <expr> <tab> Insert_tab_completion()
 
 
-" Indentation and whitespace
-" --------------------------
+# Indentation and whitespace
+# --------------------------
 filetype plugin indent on
 
 set autoindent
-    " When opening a new line and no file-type-specific indenting is enabled,
-    " keep the same indent as the previous line
+    # When opening a new line and no file-type-specific indenting is enabled,
+    # keep the same indent as the previous line
 
-set copyindent " Copy indetation of the previous line
-set smartindent " Better auto-indentation for C-like syntax
+set copyindent # Copy indetation of the previous line
+set smartindent # Better auto-indentation for C-like syntax
 
-set shiftround " Absorb space when tab is used
-set tabstop=4 " Number of columns for a Tab
+set shiftround # Absorb space when tab is used
+set tabstop=4 # Number of columns for a Tab
 set shiftwidth=0
-    " Number of inserted columns by the indent operation
-    " 0 backup to the value of tabstop
+    # Number of inserted columns by the indent operation
+    # 0 backup to the value of tabstop
 set softtabstop=-1
-    " Number of inserted columns when <Tab> is hit for indenting
-    " -1 backup to the value of shiftwidth
+    # Number of inserted columns when <Tab> is hit for indenting
+    # -1 backup to the value of shiftwidth
 
 
 set list listchars=tab:» ,trail:•,nbsp:·
-    " Show tabs, trailing and non-breaking spaces
-    " Be careful, the space after "»" is a non-breaking space
+    # Show tabs, trailing and non-breaking spaces
+    # Be careful, the space after "»" is a non-breaking space.
 
 highlight SpecialKey term=bold ctermfg=red guifg=red
-    " Color for "nbsp", "space", "tab", and "trail" from "listchars"
+    # Color for "nbsp", "space", "tab", and "trail" from "listchars"
 
 
 set expandtab
 
-function! Infer_indentation_practice()
-    " Infer indentation practice (tabs or 2/4 spaces)
-    " based on first 800 lines
-    let header=getline(1,800)
-    if match(header,"^\t", 0, 1) != -1
-        " Use tabs for indenting
+def Infer_indentation_practice()
+    # Infer indentation practice based on first 800 lines
+    const header = getline(1, 800)
+    if match(header, "^\t", 0, 1) != -1
+        # Use tabs for indenting
         set noexpandtab
-        set smarttab " Use tabs for indentation and spaces for alignment
-    elseif match(header,"^[ ][ ][^ ]", 0, 1) != -1
-        " Use 2 spaces for indenting
+        set smarttab # Use tabs for indentation and spaces for alignment
+    elseif match(header, "^[ ][ ][^ ]", 0, 1) != -1
+        # Use 2 spaces for indenting
         set tabstop=2
     else
-        " Use 4 spaces for indenting
+        # Use 4 spaces for indenting
     endif
-endfunction
+enddef
 
-autocmd BufReadPost * call Infer_indentation_practice()
-    " Infer indentation practice when opening a file (before "modelines")
+autocmd BufReadPost * Infer_indentation_practice()
+    # Infer indentation practice when opening a file (before modelines)
 
 
-" key mapping
-" -----------
+# key mapping
+# -----------
 nnoremap Y y$
-    " default: "Y" acts as "y$"
-    " Same behavior as D and C
+    # default: Y acts as yy
+    # Same behavior as D and C
 
 set pastetoggle=<F2>
-    " Toggle between nopaste and paste mode
-    " Paste mode prevents indenting
+    # Toggle between nopaste and paste mode
+    # Paste mode prevents indenting
 
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
-    " Copy to clipboard
-nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
-    " Paste from clipboard
+    # Copy to clipboard
+nmap <C-v> :call setreg("\"", system("xclip -o -selection clipboard"))<CR>p
+    # Paste from clipboard
 
-cnoremap <expr> %% expand('%:h').'/' " %% shortcut to insert file's dir
+cnoremap <expr> %% expand('%:h').'/' # %% shortcut to insert file's dir
 
 
-" POSIX regex
-" -----------
+# POSIX regex
+# -----------
 nnoremap / /\v
 vnoremap / /\v
 nnoremap :g/ :g/\v
 
 
-" File type
-" ---------
+# File type
+# ---------
 filetype on
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-autocmd BufNewFile,BufRead *.rs set filetype=rust
-autocmd BufNewFile,BufRead *.ts,*.tsx set filetype=typescript
-
