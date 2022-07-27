@@ -6,6 +6,7 @@ cursor_blink=off
 font=Inconsolata-g 12
 scroll_on_keystroke=true
 scroll_on_output=false
+smart_copy=true
 
 
 [colors]
