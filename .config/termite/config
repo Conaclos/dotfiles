@@ -3,7 +3,7 @@
 clickable_url_ctrl=true
 cursor_blink=off
     # "system", "on" or "off"
-font=Inconsolata-g 12
+font=Inconsolata 12
 scroll_on_keystroke=false
 scroll_on_output=false
 smart_copy=true
