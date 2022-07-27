@@ -2,10 +2,12 @@
 
 
 # programs
-set $locker "i3lock -i ~/.local/share/lockpaper/starfleet1.png -t -p win -e -f -c 000000 && sleep 2m"
+set $locker "i3lock -i ~/.local/share/lockpaper/starfleet1.png -t -p win -e -f -c 000000"
 set $term "termite"
-set $menu "i3-dmenu-desktop --dmenu='dmenu -i -fn Incosolata:pixelsize=18 -nb \#2d2d2d -sb \#f0c674 -sf \#0c0c0c'"
+set $menu "rofi -modi 'drun,run' -show drun"
 set $passmenu "passmenu -i -fn Incosolata:pixelsize=18 -nb '#2d2d2d' -sb '#f0c674' -sf '#0c0c0c'"
+set $winmenu "rofi -modi 'window,kill:rofi-modi-kill' -show window"
+set $charmenu "rofi -modi 'emoji,symbol:rofi-modi-symbol' -show emoji"
 
 # worspace "[order]:[name]"
 set $w1 "1"
@@ -17,7 +19,7 @@ set $w6 "6"
 set $w7 "7"
 set $w8 "8"
 set $w9 "9"
-set $w0 "10:0"
+set $w0 "10:@"
 
 set $mod Mod4
     # super key
@@ -134,6 +136,7 @@ bindsym $mod+r mode "resize"
 
 
 mode "power" {
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym p exec --no-startup-id systemctl poweroff, mode "default"
 
@@ -151,6 +154,10 @@ bindsym $mod+d exec --no-startup-id $menu
     # program (.desktop) launcher
 bindsym $mod+p exec --no-startup-id $passmenu
     # pass dmenu
+bindsym $mod+w exec --no-startup-id $winmenu
+    # window switcher
+bindsym $mod+c exec --no-startup-id $charmenu
+    # char/emoji menu
 
 
 # workspace
