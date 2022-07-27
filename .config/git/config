@@ -12,6 +12,8 @@
     conflictStyle = diff3
 [push]
     gpgSign = if-asked
+[pull]
+    ff = only
 [tag]
     forceSignAnnotated = true
 [alias]
