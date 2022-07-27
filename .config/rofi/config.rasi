@@ -1,0 +1,18 @@
+configuration {
+    combi-modi: "window,drun";
+    disable-history: true;
+    kb-custom-1: "Alt+Return";
+    modi: "";
+    scroll-method: 1; /* 0: pages, 1: continous */
+    show-icons: false;
+    sort: true;
+    terminal: "termite";
+    timeout {
+        action: "kb-cancel";
+        delay: 0;
+    }
+    filebrowser {
+        directories-first: true;
+        sorting-method: "name";
+    }
+}
