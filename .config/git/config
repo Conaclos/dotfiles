@@ -16,9 +16,12 @@
     ff = only
 [tag]
     forceSignAnnotated = true
+    sort = -v:refname
 [alias]
     checkout-pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
     graphlog = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset'
     s = status --short
 [init]
     defaultBranch = main
+[versionsort]
+    suffix = -rc
