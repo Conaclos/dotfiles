@@ -1,5 +1,6 @@
 
 [options]
+clickable_url_ctrl=true
 cursor_blink=off
     # "system", "on" or "off"
 font=Inconsolata-g 12
