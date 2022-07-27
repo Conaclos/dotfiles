@@ -8,6 +8,8 @@
      whitespace = red reverse
 [commit]
     gpgsign = true
+[merge]
+    conflictStyle = diff3
 [push]
     gpgSign = if-asked
 [tag]
