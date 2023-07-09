@@ -1,27 +1,40 @@
-[user]
-    email =
-    name = Victorien Elvinger
-    signingkey =
+[alias]
+    s = status --short
 [apply]
     whitespace = fix
 [color "diff"]
      whitespace = red reverse
 [commit]
     gpgsign = true
+[credential]
+    helper = cache --timeout 3600
+[format]
+    pretty = fuller
+[init]
+    defaultBranch = main
 [merge]
     conflictStyle = diff3
-[push]
-    gpgSign = if-asked
 [pull]
     ff = only
+    rebase = true
+[rebase]
+    updateRefs = true
+    autosquash = true
+    autostash = true
+[sendemail]
+    annotate = yes
+    smtpserver = ssl0.ovh.net
+    smtpuser = victorien@elvinger.fr
+    smtpencryption = ssl
+    smtpserverport = 465
 [tag]
     forceSignAnnotated = true
     sort = -v:refname
-[alias]
-    checkout-pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
-    graphlog = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr)%Creset'
-    s = status --short
-[init]
-    defaultBranch = main
+[user]
+    email = victorien@elvinger.fr
+    name = Victorien Elvinger
+    signingkey = f0d83b4f1cb45d54
 [versionsort]
     suffix = -rc
+[includeIf "gitdir:~/project-job/"]
+    path = config-job
