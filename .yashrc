@@ -1,0 +1,44 @@
+#!/usr/bin/yash
+
+. "$HOME/.shrc"
+unset HISTFILE
+
+# emulate bash's $SHLVL
+export SHLVL=$(( ${SHLVL:-0} + 1 ))
+
+set --brace-expand # bash-like extended expansion
+set --extended-glob # recursive pathname expansion
+set --no-clobber # use >| for overriding a file
+
+set --notify-le # print job status update ASAP, but only while line-editing
+set --le-no-conv-meta # some terminfo data are broken; meta flags have to be ignored for UTF-8
+set --le-predict # enable command line prediction
+
+set --emacs # use emacs mode
+
+bindkey --emacs '\^N' beginning-search-forward
+bindkey --emacs '\^O' clear-candidates
+bindkey --emacs '\^P' beginning-search-backward
+
+bindkey --emacs '\N' complete-next-column
+bindkey --emacs '\P' complete-prev-column
+
+bindkey --emacs '\^B' backward-bigword
+bindkey --emacs '\^F' forward-bigword
+bindkey --emacs '\^L' clear-and-redraw-all
+bindkey --emacs '\^Q' beginning-of-line # QWERTY A = AZERTY Q
+
+bindkey --emacs '\^X' complete-next-candidate
+
+re() {
+    "$@"
+}
+
+# Dimmer color for prediction part
+PS1P='\fi'
+
+YASH_LOADPATH="${XDG_DATA_HOME:-"$HOME/.local/share"}/yash:$YASH_LOADPATH"
+
+# WORKAROUND: avoid printing of dollar before first prompt
+sleep 0.1
+

@@ -1,0 +1,32 @@
+# (C) Victorien Elvinger
+
+function completion/doas {
+	OPTIONS=( #>#
+	"C:; parse and check configuration file"
+	"L; clear any persisted authentications"
+	"n; non interactive mode"
+	"s; shell"
+	"u:; user"
+	) #<#
+
+	command -f completion//parseoptions
+	case $ARGOPT in
+	(-)
+		command -f completion//completeoptions
+		;;
+	(C)
+		complete -P "$PREFIX" -f
+		;;
+	(u)
+		complete -P "$PREFIX" -u
+		;;
+	('')
+		command -f completion//getoperands
+		command -f completion//reexecute
+		;;
+	esac
+}
+
+
+# vim: set et sw=2 sts=2 tw=78 ft=sh:
+

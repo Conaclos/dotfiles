@@ -1,0 +1,5 @@
+
+# Yash never automatically sources /etc/profile, nor ~/.profile.
+. /etc/profile
+. .profile
+

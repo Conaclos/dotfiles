@@ -1,0 +1,30 @@
+# (C) 2023 Victorien Elvinger
+
+# Completion script for the "dmenu" command.
+
+function completion/dmenu {
+    OPTIONS=( #>#
+    "b; print at the bottom of the screen"
+    "f; grab the keyboard before reading stdin"
+    "-fn:; font"
+    "i; match case insensitively"
+    "l:; list items vertically with the given number of lines"
+    "m:; display on the given monitor"
+    "-nb:; normal background color"
+    "-nf:; normal foreground color"
+    "p:; define the prompt"
+    "-sb:; selected background color"
+    "-sf:; selected foreground color"
+    "-v; print version information"
+    "-w; embed into the given window id"
+	) #<#
+
+	command -f completion//parseoptions -n
+	case $ARGOPT in
+		(-)
+			command -f completion//completeoptions
+			;;
+		('')
+            ;;
+    esac
+}

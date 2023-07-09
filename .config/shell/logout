@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Must be sourced on exit of a login shell.
-
-tty > /dev/null 2>&1 &&
-    tput reset # Reset console for privacy
-

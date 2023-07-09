@@ -1,7 +1,0 @@
-
-# Filename convention
-
-.fish.sh may be executed in POSIX-compatible shells and in fish
-
-.sh may be executed in POSIX-compatible shells
-

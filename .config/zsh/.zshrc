@@ -1,6 +1,7 @@
 # Sourced in interactive shells.
 # May contain commands to set up aliases, functions, options, key bindings, etc.
 
+. "$HOME/.shrc"
 
 # autoload zsh modules when they are referenced
 zmodload -a zsh/stat zstat
@@ -15,6 +16,4 @@ for l_plugin in "$ZDOTDIR/plugins"/*.zsh; do
     . "$l_plugin"
 done
 unset l_plugin
-
-. "${XDG_CONFIG_HOME:-"$HOME/.config"}/shell/int"
 

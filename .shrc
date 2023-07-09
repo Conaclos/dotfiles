@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# This file should be sourced by any interactive shells
+
+# Each shell has its own history
+HISTFILE="${XDG_RUNTIME_DIR:-/tmp}/shell-history-$$"
+
+# Enable colors only where supported
+alias ls='command ls --color=auto'
+
+# Human friendly ls
+# -v: natural sort of number
+# -1: list (use -l for long version)
+# -h: human-readable sizes
+alias l='command ls -Av1h --color=always --time-style=long-iso --group-directories-first'
+alias ll='l -l'
+
+# Ask before making mistakes
+alias cp='command cp -i'
+alias mv='command mv -i'
+alias rm='command rm -Iv'
+
+# info=progress2 for global progression
+alias rcp='rsync -ah --info=progress2'
+
+alias grep='command grep --color=auto'
+alias ip='command ip --color=auto'
+
+alias ffmpeg='command ffmpeg -hide_banner'
+
+alias man='LESS_TERMCAP_md="$(tput bold; tput setaf 1)" LESS_TERMCAP_me="$(tput sgr0)" LESS_TERMCAP_so="$(tput bold; tput rev; tput setaf 3)" LESS_TERMCAP_se="$(tput sgr0)" LESS_TERMCAP_us="$(tput bold; tput setaf 2)" command man'
+
+# Match any running (user) process
+alias any='ps -A -o user,etime,pid,cmd | grep -v -w grep | grep -i'
+
+alias d8="$HOME/.jsvu/bin/v8 --allow-natives-syntax"
+
+if test "$TERM" = 'linux'; then
+    # 256-colors support throught fbterm
+    alias vim='command fbterm env TERM=fbterm vim'
+    alias dvtm='command fbterm env TERM=fbterm dvtm'
+fi
+
