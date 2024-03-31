@@ -1,0 +1,2 @@
+#!/bin/sh
+GRIM_DEFAULT_DIR=/playroom grim -g "$(slurp)"
