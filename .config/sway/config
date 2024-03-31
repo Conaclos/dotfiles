@@ -1,187 +1,243 @@
-# Sway config
 
-
-# programs
-set $term "termite"
-set $menu "j4-dmenu-desktop --dmenu='dmenu -i -fn Incosolata:pixelsize=18 -nb \#2d2d2d -sb \#f0c674 -sf \#0c0c0c'"
-set $passmenu "passmenu -i -fn Incosolata:pixelsize=18 -nb '#2d2d2d' -sb '#f0c674' -sf '#0c0c0c'"
-
-# worspace "[order]:[name]"
-set $w1 "1"
-set $w2 "2"
-set $w3 "3"
-set $w4 "4"
-set $w5 "5"
-set $w6 "6"
-set $w7 "7"
-set $w8 "8"
-set $w9 "9"
-set $wmail "10:@"
-set $wplay "11:°"
+### Variables
 
 set $mod Mod4
-    # super key
 
-font pango:Inconsolata 12
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term foot
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu fuzzel --terminal=$term | xargs swaymsg exec --
+set $menuemoji fuzzel --dmenu < "${XDG_DATA_HOME:-"$HOME/.local/share"}/bemoji/emojis.txt" | cut -d' ' -f1 | wl-copy
+
+### Output configuration
+
+output * background "$(find "${XDG_DATA_HOME:-"$HOME/.local/share"}/wallpaper/" -name 'w-*' | shuf -n1)" fill
 
 
-# output
-# ------
+# Switch integrated screen when closing/opening
+bindswitch --reload --locked {
+    lid:on output eDP-1 disable
+    lid:off output eDP-1 enable
+}
 
-output * bg ~/.local/share/wallpaper/w-light-wave.jpg fill
-    # default wallpapers: /usr/share/backgrounds/sway
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
 
+exec swayidle -w \
+    timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    timeout 305 'swaylock -f -c 000000' \
+    timeout 600 'systemctl suspend' \
+    before-sleep 'swaylock -f -c 000000'
 
-# key binding
-# -----------
+#xwayland disable
 
-floating_modifier $mod
-    # use Left Mouse+$mod to drag windows to their wanted position
-    # use Right Mouse+$mod to resize windows
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
 
-bindsym $mod+Shift+A kill
-    # kill focused window
+input type:keyboard {
+    xkb_layout "us,fr"
+    # Keyboard layout switch
+    xkb_options "grp:alt_space_toggle,compose:menu"
+    xkb_numlock "true"
+}
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
+# Integrated keyboard
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout "us"
+    xkb_variant "euro"
+    xkb_options "rupeesign:4,compose:rctrl"
+}
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+### Key bindings
 
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+M move right
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# `--to-code` allows supporting a generic config for seevral keyboards
+bindsym --to-code {
+    # Start a terminal
+    $mod+Return exec $term
 
-# split orientation (horizontal, vertical, toggle)
-bindsym $mod+h split h
-bindsym $mod+v split v
-bindsym $mod+t split toggle
+    # Start launchers
+    $mod+d exec $menu
+    $mod+c exec $menuemoji
 
-# change container layout (stacking, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
-bindsym $mod+e layout toggle split
+    # Gammastep
+    $mod+s exec killall gammastep 2> /dev/null || gammastep
 
-bindsym $mod+f fullscreen toggle
-    # fullscreen mode for the focused container
+    # Kill focused window
+    $mod+Shift+q kill
+    $mod+Shift+a kill
 
-bindsym $mod+Shift+space floating toggle
-    # toggle tiling / floating
+    # Reload the configuration file
+    $mod+Shift+r reload
 
-bindsym $mod+space focus mode_toggle
-    # change focus between tiling / floating windows
+    # Exit sway (logs you out of your Wayland session)
+    $mod+Shift+e exec swaymsg exit
 
-bindsym $mod+q focus parent
-    # focus the parent container
+    # Move your focus around
+    $mod+$left focus left
+    $mod+$down focus down
+    $mod+$up focus up
+    $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    $mod+Left focus left
+    $mod+Down focus down
+    $mod+Up focus up
+    $mod+Right focus right
 
-# switch to workspace
-bindsym $mod+ampersand workspace $w1
-bindsym $mod+eacute workspace $w2
-bindsym $mod+quotedbl workspace $w3
-bindsym $mod+apostrophe workspace $w4
-bindsym $mod+parenleft workspace $w5
-bindsym $mod+minus workspace $w6
-bindsym $mod+egrave workspace $w7
-bindsym $mod+underscore workspace $w8
-bindsym $mod+ccedilla workspace $w9
-bindsym $mod+agrave workspace $wmail
-bindsym $mod+parenright workspace $wplay
-bindsym $mod+equal scratchpad show
+    # Move the focused window with the same, but add Shift
+    $mod+Shift+$left move left
+    $mod+Shift+$down move down
+    $mod+Shift+$up move up
+    $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    $mod+Shift+Left move left
+    $mod+Shift+Down move down
+    $mod+Shift+Up move up
+    $mod+Shift+Right move right
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $w1
-bindsym $mod+Shift+2 move container to workspace $w2
-bindsym $mod+Shift+3 move container to workspace $w3
-bindsym $mod+Shift+4 move container to workspace $w4
-bindsym $mod+Shift+5 move container to workspace $w5
-bindsym $mod+Shift+6 move container to workspace $w6
-bindsym $mod+Shift+7 move container to workspace $w7
-bindsym $mod+Shift+8 move container to workspace $w8
-bindsym $mod+Shift+9 move container to workspace $w9
-bindsym $mod+Shift+0 move container to workspace $wmail
-bindsym $mod+Shift+degree move container to workspace $wplay
-bindsym $mod+Shift+plus move scratchpad
+    # Switch to workspace
+    $mod+1 workspace number 1
+    $mod+2 workspace number 2
+    $mod+3 workspace number 3
+    $mod+4 workspace number 4
+    $mod+5 workspace number 5
+    $mod+6 workspace number 6
+    $mod+7 workspace number 7
+    $mod+8 workspace number 8
+    $mod+9 workspace number 9
 
-bindsym $mod+Shift+c reload
-    # reload the configuration file
-bindsym $mod+Shift+r restart
-    # Preserve layout/session, can be used to upgrade
-bindsym $mod+Shift+e exit
-    # Log you out of your X session
+    # Move focused container to workspace
+    $mod+Shift+1 move container to workspace number 1
+    $mod+Shift+2 move container to workspace number 2
+    $mod+Shift+3 move container to workspace number 3
+    $mod+Shift+4 move container to workspace number 4
+    $mod+Shift+5 move container to workspace number 5
+    $mod+Shift+6 move container to workspace number 6
+    $mod+Shift+7 move container to workspace number 7
+    $mod+Shift+8 move container to workspace number 8
+    $mod+Shift+9 move container to workspace number 9
 
-# resize window (you can also use the mouse for that)
+    $mod+Ctrl+Left workspace prev
+    $mod+Ctrl+Right workspace next
+
+    $mod+Ctrl+$left workspace prev
+    $mod+Ctrl+$right workspace next
+
+    $mod+Shift+Tab workspace prev
+    $mod+Tab workspace next
+
+    $mod+Ctrl+Shift+Left move container to workspace prev
+    $mod+Ctrl+Shift+Right move container to workspace next
+
+    $mod+Ctrl+Shift+$left move container to workspace prev
+    $mod+Ctrl+Shift+$right move container to workspace next
+
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    $mod+n split h
+    $mod+v split v
+
+    # Switch the current container between different layout styles
+    $mod+t layout toggle split tabbed
+
+    # Make the current focus fullscreen
+    $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    $mod+a focus parent
+
+    # Move the currently focused window to the scratchpad
+    $mod+Shift+0 move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, the command cycles through them.
+    $mod+0 scratchpad show
+
+    # Cycle through border styles
+    $mod+b border toggle
+
+    # resize
+    $mod+r mode "resize"
+}
+
+bindsym --locked {
+    # Multimedia
+    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+    # Brightness controls
+    XF86MonBrightnessDown exec brightnessctl set 5%-
+    XF86MonBrightnessUp exec brightnessctl set 5%+
+}
+
+# Screenshot
+bindsym Print exec GRIM_DEFAULT_DIR=/playroom grim -g "$(slurp)"
+
 mode "resize" {
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym m resize grow width 10 px or 10 ppt
+    bindsym --to-code {
+        # left will shrink the containers width
+        # right will grow the containers width
+        # up will shrink the containers height
+        # down will grow the containers height
+        $left resize shrink width 20px
+        $down resize grow height 20px
+        $up resize shrink height 20px
+        $right resize grow width 20px
 
-    # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+        # Ditto, with arrow keys
+        Left resize shrink width 20px
+        Down resize grow height 20px
+        Up resize shrink height 20px
+        Right resize grow width 20px
 
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+        # Return to default mode
+        Return mode "default"
+        Escape mode "default"
+    }
 }
-bindsym $mod+r mode "resize"
 
-
-mode "power" {
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym p exec --no-startup-id systemctl poweroff, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Pause mode "power"
-
-# app laucnh
-bindsym $mod+Return exec $term
-bindsym $mod+d exec --no-startup-id $menu
-    # program (.desktop) launcher
-bindsym $mod+p exec --no-startup-id $passmenu
-    # pass dmenu
-
-
-# workspace
-# ---------
-
-# large screen workspace
-workspace $wplay output HDMI1
-
-# Assign clients to their workspaces
-assign [class="mpv|mplayer|Vlc"] $wplay
-
-
-# Bar
-# ---
-
-# start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
-    mode hide
+    # Read `man 5 sway-bar` for more information about this section.
     position top
+    mode hide
     status_command i3status
-    strip_workspace_numbers yes
-        # Prefer workspace name to number
     colors {
         background #2d2d2d
         statusline #dedede
@@ -193,24 +249,15 @@ bar {
     }
 }
 
-
-# UI
-# --
-
-new_window pixel 1
-    # hide the titlebar
-
+# hide the titlebar
+default_border pixel 3
+# except for floating windows
+default_floating_border normal
+# use borders only if it is not the only container on this workspace
 hide_edge_borders smart
-    # use borders only if it is not the only container on this workspace
 
-# Colors
-client.background #2d2d2d
 
-# Custom window manager behavior
-for_window [class="^Ec$"] floating enable
-for_window [class="^Estudio$"] floating enable
-for_window [class="Pinentry"] floating enable
-for_window [class="^Toplevel$"] floating enable
+for_window [class="mpv|Vlc"] fullscreen enable
 
-for_window [class="mpv|mplayer|Vlc"] fullscreen enable
+include /etc/sway/config.d/*
 
