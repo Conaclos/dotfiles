@@ -25,6 +25,8 @@
 [pull]
     ff = only
 [push]
+    autoSetupRemote = true
+    default = current
     force-if-includes = true
 [rebase]
     updateRefs = true
