@@ -24,6 +24,8 @@
     conflictStyle = zdiff3
 [pull]
     ff = only
+[push]
+    force-if-includes = true
 [rebase]
     updateRefs = true
     autosquash = true
