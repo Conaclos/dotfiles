@@ -3,6 +3,8 @@
     l = log --oneline
 [apply]
     whitespace = fix
+[branch]
+    sort = -committerdate
 [color "diff"]
      whitespace = red reverse
 [commit]
