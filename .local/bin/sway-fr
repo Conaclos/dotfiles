@@ -1,2 +1,0 @@
-#!/bin/sh
-env XKB_DEFAULT_LAYOUT=fr sway

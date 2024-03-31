@@ -1,2 +1,0 @@
-#!/bin/sh -eu
-xdotool set_window --name "$*" "$(xdotool getactivewindow)"
