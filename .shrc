@@ -28,7 +28,7 @@ alias ip='command ip --color=auto'
 
 alias ffmpeg='command ffmpeg -hide_banner'
 
-alias man='LESS_TERMCAP_md="$(tput bold; tput setaf 1)" LESS_TERMCAP_me="$(tput sgr0)" LESS_TERMCAP_so="$(tput bold; tput rev; tput setaf 3)" LESS_TERMCAP_se="$(tput sgr0)" LESS_TERMCAP_us="$(tput bold; tput setaf 2)" command man'
+alias man='env MANROFFOPT="-P -c" LESS_TERMCAP_md="$(tput bold; tput setaf 1)" LESS_TERMCAP_me="$(tput sgr0)" LESS_TERMCAP_so="$(tput bold; tput smso; tput setaf 3)" LESS_TERMCAP_se="$(tput sgr0)" LESS_TERMCAP_us="$(tput bold; tput setaf 2)" man'
 
 # Match any running (user) process
 alias any='ps -A -o user,etime,pid,cmd | grep -v -w grep | grep -i'
