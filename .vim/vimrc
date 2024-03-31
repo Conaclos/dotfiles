@@ -27,7 +27,6 @@ endif
 
 set runtimepath+=$VIM_DATA_HOME # Add $VIM_DATA_HOME as runtime directory
 
-
 # Backup
 # ------
 if isdirectory($VIM_DATA_HOME .. '/backup')
@@ -203,9 +202,9 @@ set pastetoggle=<F2>
     # Toggle between nopaste and paste mode
     # Paste mode prevents indenting
 
-vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+vmap <C-c> y:call system("wl-copy", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
     # Copy to clipboard
-nmap <C-v> :call setreg("\"", system("xclip -o -selection clipboard"))<CR>p
+nmap <C-v> :call setreg("\"", system("wl-paste"))<CR>p
     # Paste from clipboard
 
 cnoremap <expr> %% expand('%:h').'/' # %% shortcut to insert file's dir
