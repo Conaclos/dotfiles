@@ -7,14 +7,19 @@
      whitespace = red reverse
 [commit]
     gpgsign = true
+    verbose = true
 [credential]
     helper = cache --timeout 3600
+[diff]
+    algorithm = histogram
+    colorMoved = default
+    colorMovedWS = allow-indentation-change
 [format]
     pretty = fuller
 [init]
     defaultBranch = main
 [merge]
-    conflictStyle = diff3
+    conflictStyle = zdiff3
 [pull]
     ff = only
     rebase = true
