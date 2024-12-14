@@ -1,0 +1,48 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // Missing VSCode Key Bindings
+      "ctrl-shift-up": "editor::AddSelectionAbove",
+      "ctrl-shift-down": "editor::AddSelectionBelow"
+    }
+  },
+  // Override VIM keymap
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "ctrl-b": "workspace::ToggleLeftDock", // vim default: page up
+      "ctrl-f": "buffer_search::Deploy", // vim default: page down
+      "ctrl-j": "workspace::ToggleBottomDock", // vim default: down
+      "ctrl-o": "workspace::Open", // vim default: go back
+      "ctrl-shift-w": "pane::CloseActiveItem" // replace Ctrl-w that is used for VIM's split mode
+    }
+  },
+  {
+    "context": "Editor && !menu && (vim_mode == insert || vim_mode == visual)",
+    "bindings": {
+      "ctrl-c": "editor::Copy", // vim default: return to normal mode
+      "ctrl-x": "editor::Cut" // vim default: decrement
+    }
+  },
+  {
+    "context": "Editor && !menu && vim_mode == insert",
+    "bindings": {
+      "ctrl-v": "editor::Paste", // vim default: visual block mode
+      "ctrl-a": "editor::SelectAll" // vim default: increment
+    }
+  },
+  {
+    "context": "Editor && !menu && vim_mode == normal",
+    "bindings": {
+      "shift-space": "vim::PageUp", // vim default: right
+      "space": "vim::PageDown" // vim default: right
+    }
+  }
+]

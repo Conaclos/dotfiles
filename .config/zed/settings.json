@@ -1,0 +1,115 @@
+{
+  "ui_font_size": 19,
+  "buffer_font_size": 20,
+  "buffer_line_height": "standard",
+  "buffer_font_features": {
+    "calt": false
+  },
+  "scrollbar": {
+    //  "show": "never",
+    //"cursors": true
+  },
+  "scroll_beyond_last_line": "vertical_scroll_margin",
+  "tab_bar": {
+    "show": false,
+    "show_nav_history_buttons": false
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "VSCode Dark Modern"
+    //"dark": "Tomorrow Night Out"
+  },
+  "toolbar": {
+    //"breadcrumbs": true,
+    //"quick_actions": true,
+    //"selections_menu": true
+  },
+  "collaboration_panel": {
+    //"button": false
+  },
+  "chat_panel": {
+    //"button": false
+  },
+  "assistant": {
+    "enabled": false,
+    "version": "2",
+    "button": false
+  },
+  "features": {
+    "inline_completion_provider": "none"
+  },
+  "gutter": {
+    "folds": false
+  },
+  "soft_wrap": "editor_width",
+  "wrap_guides": [80, 100],
+  "terminal": {
+    "env": {
+      // Workaround for https://github.com/zed-industries/zed/issues/4360
+      "LANG": "en_DK.UTF-8",
+      "LC_ALL": "en_DK.UTF-8",
+      "LC_COLLATE": "C"
+    }
+  },
+
+  // xdg-desktop-portal-wlr doesn't provide any file picker
+  // See https://zed.dev/docs/linux#clicking-links-isnt-working
+  // See https://wiki.archlinux.org/title/XDG_Desktop_Portal#List_of_backends_and_interfaces
+  "use_system_path_prompts": false,
+
+  "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+
+  "telemetry": {
+    //"diagnostics": true,
+    //"metrics": true
+  },
+
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        // get more cargo-less diagnostics from rust-analyzer,
+        // which might include false-positives (those can be turned off by their names)
+        "diagnostics": {
+          "experimental": {
+            "enable": true
+          }
+        },
+        "checkOnSave": true,
+        "cargo": {
+          // Check the `lib` target only.
+          "allTargets": false
+        },
+        "check": {
+          // Use `-p` instead of `--workspace` for cargo check
+          "workspace": false
+        },
+        "completion": {
+          "snippets": {
+            "custom": {
+              "Ok": {
+                "postfix": "ok",
+                "body": ["Ok(${receiver})"],
+                "scope": "expr"
+              },
+              "Some": {
+                "postfix": "some",
+                "body": ["Some(${receiver})"],
+                "scope": "expr"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
