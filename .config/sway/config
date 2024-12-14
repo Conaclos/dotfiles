@@ -161,13 +161,11 @@ bindsym --to-code {
     $mod+Ctrl+Shift+$left move container to workspace prev
     $mod+Ctrl+Shift+$right move container to workspace next
 
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    $mod+n split h
-    $mod+v split v
+    # Switch split orientation
+    $mod+v layout toggle splitv splith
 
     # Switch the current container between different layout styles
-    $mod+t layout toggle split tabbed
+    # $mod+t layout toggle split tabbed
 
     # Make the current focus fullscreen
     $mod+f fullscreen
