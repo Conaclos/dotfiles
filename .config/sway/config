@@ -37,9 +37,9 @@ bindswitch --reload --locked {
 
 exec swayidle -w \
     timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    timeout 305 'swaylock -f -c 000000' \
+    timeout 305 'swaylock --daemonize' \
     timeout 600 'systemctl suspend' \
-    before-sleep 'swaylock -f -c 000000'
+    before-sleep 'swaylock --daemonize'
 
 #xwayland disable
 
@@ -91,6 +91,9 @@ bindsym --to-code {
 
     # Gammastep
     $mod+s exec killall gammastep 2> /dev/null || gammastep
+
+    # manual screen locking
+    $mod+x exec swaylock --daemonize
 
     # Kill focused window
     $mod+Shift+q kill
@@ -161,7 +164,7 @@ bindsym --to-code {
     $mod+Ctrl+Shift+$left move container to workspace prev
     $mod+Ctrl+Shift+$right move container to workspace next
 
-    # Switch split orientation
+    # Change split orientation
     $mod+v layout toggle splitv splith
 
     # Switch the current container between different layout styles
@@ -248,12 +251,9 @@ bar {
 }
 
 # hide the titlebar
-default_border pixel 3
+default_border pixel 2
 # except for floating windows
 default_floating_border normal
-# use borders only if it is not the only container on this workspace
-hide_edge_borders smart
-
 
 for_window [class="mpv|Vlc"] fullscreen enable
 
