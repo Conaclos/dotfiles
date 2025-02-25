@@ -14,8 +14,14 @@
     helper = cache --timeout 3600
 [diff]
     algorithm = histogram
-    colorMoved = default
+    colorMoved = plain
     colorMovedWS = allow-indentation-change
+    mnemonicPrefix = true
+    renames = true
+[fetch]
+    all = true
+    prune = true
+    pruneTags = true
 [format]
     pretty = fuller
 [init]
@@ -31,9 +37,12 @@
     default = current
     force-if-includes = true
 [rebase]
-    updateRefs = true
     autosquash = true
     autostash = true
+    updateRefs = true
+[rerere]
+    enabled = true
+    autoupdate = true
 [sendemail]
     annotate = yes
     smtpserver = ssl0.ovh.net
@@ -42,7 +51,7 @@
     smtpserverport = 465
 [tag]
     forceSignAnnotated = true
-    sort = -v:refname
+    sort = version:refname
 [user]
     email = victorien@elvinger.fr
     name = Victorien Elvinger
