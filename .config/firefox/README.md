@@ -86,6 +86,13 @@ Would you like take the control over your browser?
 Enable `accessibility.blockautorefresh`
 
 
+### Disable AI chat
+
+Tired of the AI hype?
+
+Disable `browser.ml.chat.enabled` and `browser.ml.enabled`.
+
+
 ### Windows without URL bar
 
 Enable `dom.disable_window_open_feature.location`.
