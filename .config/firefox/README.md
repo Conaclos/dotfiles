@@ -26,13 +26,7 @@ If you use a tiling winfows mananger such as [i3](https://i3wm.org), you can be
 Disable `browser.fullscreen.autohide`
 
 
-### Disable Poccket and Firefox Sync
-
-If you don't use Pocket, you can disbale the extension.
-This also removes the save-to-pocket entry from the contextual menu.
-
-Disable `extensions.pocket.enabled`
-
+### Disable Firefox Sync
 
 If you don't use Firefox sync service, you can disbale UI-related elemnts.
 
