@@ -1,6 +1,8 @@
 [alias]
     s = status --short
-    l = log --oneline
+    l = log --oneline --show-linear-break
+    lf = log --oneline --show-linear-break --name-status
+    uncommit = reset --soft HEAD~1
 [apply]
     whitespace = fix
 [branch]
